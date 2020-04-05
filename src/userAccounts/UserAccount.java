@@ -17,4 +17,5 @@ public class UserAccount {
 	public String getName() {
 		return name;
 	}
+	
 }

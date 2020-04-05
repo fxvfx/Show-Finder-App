@@ -28,7 +28,7 @@ public class showDriver {
 								+ "\"create\" if you would like to create an account,"
 								+ " and \"guest\" if you would like to continue with a guest account. \n"
 								+ "Type \"exit\" at any time to quit the program.");
-			
+			//TODO: add UserLogic class
 			command = getInputLine(in);
 
 			if(command.contentEquals("exit"))
