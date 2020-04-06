@@ -3,6 +3,7 @@ package commands;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import shows.ShowList;
 import userAccounts.Guest;
 import userAccounts.StandardUser;
 import userAccounts.UserAccount;
@@ -22,16 +23,20 @@ public class CommandLogic {
 			));	
 	
 	public static final LinkedList<String> sysCommands = new LinkedList<String>(Arrays.asList(
-			"search", "leaveReview", "buyTicket", "printTickets",
+			"search", "writeReview", "buyTicket", "showTickets", "printTickets",
 			"addShow" //administrator-restricted commands
+			));
+	
+	public static final LinkedList<String> searchTypes = new LinkedList<String>(Arrays.asList(
+			"category", "name", "review", "time"
 			));
 	
 	private UserAccount currentUser;
 
 	public CommandLogic() {
 		currentUser = null;
-		this.shows = new ShowList();
-		this.UserAccounts  = new UserAccounts();
+		CommandLogic.shows = new ShowList(); //however these get implemented through the JSON
+		this.UserAccounts  = new UserAccounts(); //however these get implemented through the JSON
 	}
 	
 	/**
@@ -43,8 +48,8 @@ public class CommandLogic {
 	/**
 	 * @return: the list of shows
 	 */
-	public UserAccount getShows() {
-		return this.shows;
+	public ShowList getShows() {
+		return shows;
 	}
 	/**
 	 * @return: the list of users
@@ -59,14 +64,18 @@ public class CommandLogic {
 	public LinkedList<String> getLoginCommands() {
 		return loginCommands;
 	}
-	
 	/**
 	 * @return: LinkedList of possible system commands
 	 */
 	public LinkedList<String> getSysCommands() {
 		return sysCommands;
 	}
-	
+	/**
+	 * @return: LinkedList of possible system commands
+	 */
+	public LinkedList<String> getSearchTypes() {
+		return searchTypes;
+	}
 	
 	/**
 	 * Verifies if a command is a possible login command
@@ -94,5 +103,49 @@ public class CommandLogic {
 	public boolean login(String user, String pwd) {
 		currentUser = users.login(user, pwd);
 		return currentUser != null;
+	}
+	
+	/**
+	 * Searches for a show within the list of shows
+	 * @return wantedShow: the wanted show
+	 */
+	public Show search(String searchType, String parameter) {
+		Show wantedShow = null;
+		
+		if(searchType.contentEquals("category"))
+			wantedShow = shows.categorySearch(parameter);
+		else if(searchType.contentEquals("name"))
+			wantedShow = shows.nameSearch(parameter);
+		else if(searchType.contentEquals("review"))
+			wantedShow = shows.reviewSearch(parameter);
+		else if(searchType.contentEquals("time"))
+			wantedShow = shows.timeSearch(parameter);
+		
+		return wantedShow;
+	}
+	
+	public void writeReview(Show show, int starCount, String description) {
+		currentUser.writeReview(show, starCount, description);
+	}
+	
+	public String showTickets() {
+		return currentUser.showTickets();
+	}
+	
+	public void printTickets() { //TODO: figure out how this works w/ respect to fileIO
+		currentUser.printTickets();
+	}
+	
+	public void buyTicket(Show show) {
+		currentUser.getShoppingCart().buyTicket(show);
+	}
+	
+	public void addShow() {//TODO: this is about to take a looot of String variables; i'm not doing this
+								//until I have a concrete "show" class
+		if(!currentUser.isAdmin())
+			return;
+		
+		Show newShow = new Show();
+		shows.addShow(newShow);
 	}
 }
