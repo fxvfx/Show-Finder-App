@@ -3,9 +3,9 @@
  * @author Michael Norton (CSCE 247-001) //TODO team name
  *
  */
-import java.util.LinkedList;
-
 package shows;
+
+import java.util.LinkedList;
 
 public class ShowList {
 	private LinkedList<Show> shows;
