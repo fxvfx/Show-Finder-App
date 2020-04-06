@@ -1,6 +1,7 @@
 /**
  * Manages the list of shows in the system
  * @author Michael Norton (CSCE 247-001) //TODO team name
+ * @edited Francis Villanueva
  *
  */
 package shows;
@@ -11,7 +12,7 @@ public class ShowList {
 	private LinkedList<Show> shows;
   
 	public ShowList() {
-    
+		shows = new LinkedList<Show>();
 	}
 	/**
 	 * Inserts a show into the list of shows
