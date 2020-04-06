@@ -1,45 +1,45 @@
 import java.util.Scanner;
 import userAccounts.*;
+import ui.*;
 
 /**
  * Controls the User Input Interface for the Show Finder Application
- * @author Francis Villanueva
+ * @author Francis Villanueva (CSCE 247-001) //TODO team name
  *
  */
 public class showDriver {
-	//private static ShowList shows;
-	//private static UserAccounts users;
-	
-	private UserAccount currentUser;
-	
-	private static final String[] commands = {"search", };
 	
 	/**
-	 * Handles the system output
+	 * Handles all system output
 	 */
 	public void runShowDriver() {
+		CommandLogic system = new CommandLogic();
+		
 		Scanner in = new Scanner(System.in);
 		String command;
 		System.out.println("Welcome to the Show Finder Application! \n");
 		
-		//Login block -> maybe I should move this to the 'login' method body
 		while(true) {
 			System.out.println( "Type \"login\" if you have an existing account, "
 								+ "\"create\" if you would like to create an account,"
 								+ " and \"guest\" if you would like to continue with a guest account. \n"
 								+ "Type \"exit\" at any time to quit the program.");
-			//TODO: add UserLogic class
+			
 			command = getInputLine(in);
 
 			if(command.contentEquals("exit"))
 				exit();
-			else
-				this.currentUser = login(command);
 			
-			if(currentUser != null)
-				break;
-			else
+			
+			if(!system.login(command)) {
 				System.out.println("Login failed. Please try again.\n\n");
+			}
+			else if() {
+				
+			}
+			else
+				break;
+				 
 		}
 		System.out.println("Login successful! Welcome, " + currentUser.getName() + ".");
 		
@@ -65,31 +65,13 @@ public class showDriver {
 		return in.nextLine().toLowerCase().trim();
 	}
 	
-	private UserAccount login(String userType) {
-		UserAccount attemptedUser = null;
-		
-		if(userType.contentEquals("login")) {
-			attemptedUser = new StandardUser("input"); //TODO do input
-		}
-		else if(userType.contentEquals("guest")) {
-			attemptedUser = new Guest();
-		}
-		else if(userType.contentEquals("create")) {
-			attemptedUser = new StandardUser("created"); //TODO code 'createaccount' class handler?
-		}
-		else
-			System.out.println("Command not recognized.");
-		
-		return attemptedUser;
-	}
-	
 	private void exit() {
 		System.out.println("Goodbye!");
 		System.exit(0); 
 	}
 	
 	public static void main(String[] args) {
-		showDriver sDriver = new showDriver();
-		sDriver.runShowDriver();
+		showDriver showDriver = new showDriver();
+		showDriver.runShowDriver();
 	}
 }
