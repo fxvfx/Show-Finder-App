@@ -5,6 +5,7 @@
  */
 import java.util.LinkedList;
 
+package shows;
 
 public class ShowList {
 	private LinkedList<Show> shows;
