@@ -1,3 +1,5 @@
+package lists;
+
 /**
 *
 * author: hannah killian
@@ -8,7 +10,7 @@ package lists;
 
 public interface List {
 
-	public double CalculateTotal();
+	public double calculateTotal();
 
 	public String toString();
 
