@@ -1,14 +1,16 @@
 package seats;
 
+import lists.TicketList;
+
 public class SeatTracker {
 
 	private TicketList takenSeats;
 	private TicketList availableSeats;
 	private TicketList handicappedSeats;
 
-	private takenSeats getSeats;
-	private availableSeats getAvailableSeats;
-	private handicappedSeats getHandicappedSeats;
+	private TicketList takenSeats;
+	private TicketList availableSeats;
+	private TicketList handicappedSeats;
 
 	public showAvailableSeats(SeatDisplay seats) {
 		
