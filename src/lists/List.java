@@ -1,5 +1,10 @@
 package lists;
 
+/**
+*
+* author: hannah killian
+*
+**/
 
 public interface List {
 
