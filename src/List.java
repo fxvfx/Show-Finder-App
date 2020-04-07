@@ -4,6 +4,8 @@
 *
 **/
 
+package lists;
+
 public interface List {
 
 	public double CalculateTotal();
@@ -13,7 +15,4 @@ public interface List {
 	public void addItem();
 
 	public void removeItem();
-
-	public abstract void getNext();
-
 }
