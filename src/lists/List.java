@@ -1,7 +1,9 @@
+package lists;
+
 
 public interface List {
 
-	public double CalculateTotal();
+	public double calculateTotal();
 
 	public String toString();
 
@@ -9,6 +11,6 @@ public interface List {
 
 	public void removeItem();
 
-	public abstract getNext();
+	public abstract void getNext();
 
 }

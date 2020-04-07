@@ -1,3 +1,4 @@
+package seats;
 
 public class SeatTracker {
 
@@ -10,7 +11,7 @@ public class SeatTracker {
 	private handicappedSeats getHandicappedSeats;
 
 	public showAvailableSeats(SeatDisplay seats) {
-
+		
 	}
 
 	public void buyTicket(Show shows) {

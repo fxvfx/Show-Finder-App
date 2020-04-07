@@ -1,5 +1,6 @@
-import java.util.*;
+package lists;
 
+import java.util.LinkedList;
 
 public class TicketList {
 
