@@ -10,24 +10,16 @@ public class Review {
 	private String reviewContent;
 	private int numStars;
 	private UserAccount owner;
+	private Show show;
 
-	// Review
-	//I put (...) on the UML for this, but it should be the constructor that takes in a String, int, and
-	// UserAccount and then does constructor stuff (like this.reviewContent = reviewContent, if you remember
-	// seeing that)
-	/**
-	 * @Override
-	 * something
-	 */
-
+	public Review(Show show, String reviewContent, int numStars, UserAccount owner) {
+		//this is your alternate (and only) constructor for the Review class; 
+	}
+	
 	public String toString() {
-		return " ";
+		return " "; //you know what to do here :)
 	}
 	
 	//also please comment your methods and add your descriptive header, like we've been doing for our individual
 	// GitHub assignments!
-	
-	//also, personal note: each class does not (and should not) have a "public static void main(String[] args)" method;
-	// these are usually only reserved for the driver itself.  Your class is just for making/doing object based stuff, so
-	// you don't necessarily need a main method for anything.  :)
 }

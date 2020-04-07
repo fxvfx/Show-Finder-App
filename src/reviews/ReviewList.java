@@ -1,21 +1,41 @@
+package reviews;
+
+import java.util.LinkedList;
+
 /**
- * 
- * @author hannah killian <- thank you for adding your author name here!
- * @editor Francis Villanueva
+ *
+ * @author hannah killian
  *
  */
 
-package reviews;
-
 public class ReviewList {
 
-	//private reviews //this should be a Java default LinkedList, named Reviews; try importing the default java LinkedList to use
+	private LinkedList<Review> reviews;
+
+	public void reviewList() {
+		
+		// reviews: LinkedList<Reviews>
+		reviews  = new LinkedList<Review>();
+
+	}
 	
-	//this should print out all the reviews in the variable "reviews"
-	public String print() {
-		return;
+	public void addReview(Review review) {
+		// adding a review from "reviews"
+	}
+	
+	public void removeReview(Review review) {
+		// deleting a review from "reviews"
+	}
+	
+	
+	/**
+	 * Returns a String output of all the Reviews in the ReviewList
+	 * @return: String representing all the reviews in the list
+	 * 
+	 * TODO: ^ this is how your method comments should look! :D
+	 */
+	public String toString() {
+		//your functionality @hannah; probably make it call the "Review" object's toString()
 	}
 
-	//also please comment your methods and add your descriptive header, like we've been doing for our individual
-	// GitHub assignments!
 }

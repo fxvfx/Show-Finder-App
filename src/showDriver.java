@@ -213,7 +213,7 @@ public class showDriver {
 	 * Handles output for adding a show to the show list
 	 */
 	public void addShow() {
-		if(!system.currentUser.isAdmin())
+		if(!system.getUser().isAdmin())
 			System.out.println("Command not available for non-admin users.");
 		else {
 			//TODO: a bunch of scanner statements to get information about a show
