@@ -1,3 +1,8 @@
+/**
+*
+* author: hannah killian
+*
+**/
 
 public interface List {
 
@@ -9,6 +14,6 @@ public interface List {
 
 	public void removeItem();
 
-	public abstract getNext();
+	public abstract void getNext();
 
 }
