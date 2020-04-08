@@ -26,6 +26,26 @@ public class SeatTracker {
 			}
 		}
 	}
+	
+	public int getRowNum() {
+		return ROW_NUM;
+	}
+	
+	/*private void setRowNum(int rowNum) {
+		this.ROW_NUM = rowNum;
+	}*/
+	
+	public String[] getSeatLetters() {
+		return SEAT_LETTERS;
+	}
+	
+	/*private void setSeatLetters(String[] seatLetters) {
+		this.SEAT_LETTERS = seatLetters;
+	}*/
+	
+	public TicketList getSeats() {
+		return seats;
+	}
 	//TODO: SeatTracker constructor that specifies price, SeatTracker constructor that specifies size
 	
 //	/**
