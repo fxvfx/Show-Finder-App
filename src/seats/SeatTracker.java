@@ -1,5 +1,6 @@
 package seats;
 
+import shows.Show;
 import tickets.*;
 
 /**
@@ -22,20 +23,20 @@ public class SeatTracker {
 			for(int j=0; j<SEAT_LETTERS.length; j++) {
 				String seatID = i + SEAT_LETTERS[j];
 				Ticket newTicket = new Ticket(show, seatID, DEFAULT_PRICE, false);
-				seats.addItem();
+				seats.add(newTicket);
 			}
 		}
 	}
 	//TODO: SeatTracker constructor that specifies price, SeatTracker constructor that specifies size
 	
-	/**
-	 * Shows the available seats for a Show
-	 * @return: a String representation of the available seats
-	 */
-	public String showAvailableSeats() {
-		SeatDisplay display = new SeatDisplay(seats);
-		return display;
-	}
+//	/**
+//	 * Shows the available seats for a Show
+//	 * @return: a String representation of the available seats
+//	 */
+//	public String showAvailableSeats() {
+//		SeatDisplay display = new SeatDisplay(seats);
+//		return display;
+//	}
 
 	/**
 	 * Buys a ticket
@@ -44,7 +45,7 @@ public class SeatTracker {
 	public Ticket buyTicket() {
 		for(int i=0; i<seats.getTicketAmount(); i++) {
 			if(seats.get(i) != null && seats.get(i).getIsTaken() == false) {
-				seats.remove(i);
+				seats.purchase(seats.get(i));
 				return seats.get(i);
 			}
 		}
@@ -60,14 +61,17 @@ public class SeatTracker {
 		
 		for(int i=0; i<seats.getTicketAmount(); i++) {
 			if(seats.get(i) != null && seats.get(i).getIsTaken() == false) {
-				seats.remove(i);
-				purchasedTickets.addItem(seats.get(i));
+				seats.purchase(seats.get(i));
+				purchasedTickets.add(seats.get(i));
 			}
 		}
-		return purchasedTickets
+		return purchasedTickets;
 	}
 
-	public void refundTicket() {
-
+	/**
+	 * Refunds a ticket
+	 */
+	public void refundTicket(Ticket ticket) {
+		seats.refund(ticket);
 	}
 }

@@ -2,63 +2,58 @@ package tickets;
 
 import java.util.LinkedList;
 
-public class TicketList extends CartList {
+/**
+ * Keeps track of a show's Tickets
+ * @author Francis Villanueva
+ *
+ */
+public class TicketList {
 	
-	//make getters for these please
-	int ticketAmount;
 	LinkedList<Ticket> tickets;
 	
-	//TODO: when you code the addItem() for this, make sure you can't add a Ticket to the TicketList with the same
-	// name
-	//TODO: this needs a default constructor	
 	public TicketList() {
-		ticketAmount = 0;
 		tickets = new LinkedList<Ticket>();
 	}
 	
+	/**
+	 * Returns amount of tickets available
+	 * @return: amount of tickets
+	 */
 	public int getTicketAmount() {
-		
+		return tickets.size();
 	}
 	
-	public Ticket get(int index) {//turns out we do need a getNext() here, just call "get()" on the linked list for the ticket object though
-		
+	/**
+	 * Retrieves a ticket at an indicated index
+	 * @param index: index of ticket
+	 * @return: ticket
+	 */
+	public Ticket get(int index) {
+		return tickets.get(index);
 	}
 	
-	public Ticket getFirst() { //call the LinkedList's default "getNext()" method
-		
+	/**
+	 * Adds a ticket to the List
+	 * @param ticket:  ticket to be added
+	 */
+	public void add(Ticket ticket) {
+		tickets.add(ticket);
 	}
 	
-	public void removeFirst() {// by "remove item" i just mean set the ticket's isTaken value to "false"
-		
+	/**
+	 * Purchases a ticket from the TicketList by setting its status to "taken"
+	 * @param index: index of ticket to be removed
+	 */
+	public void purchase(Ticket ticket) { //similar to removeFirst except at index
+		ticket.setIsTaken(false);
 	}
 	
-	public void remove(int index) { //similar to removeFirst except at index
-		
+	/**
+	 * Marks ticket as available for purchase again
+	 * @param ticket: ticket to be refunded
+	 */
+	public void refund(Ticket ticket) {
+		ticket.setIsTaken(false);
 	}
-
-	@Override
-	public double calculateTotal() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object addItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object removeItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 }

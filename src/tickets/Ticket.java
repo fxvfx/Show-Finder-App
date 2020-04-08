@@ -1,8 +1,10 @@
 package tickets;
+
+import shows.Show;
+
 /**
- *
- * @author hannah killian
- * @edited Francis Villanueva
+ * Specifies a Ticket object for a Show
+ * @author Francis Villanueva
  */
 
 public class Ticket {
@@ -23,7 +25,7 @@ public class Ticket {
 	}
 
 	// getters and setters
-	public String getShow() {
+	public Show getShow() {
 		return show;
 	}
 	public void setShow(Show show) {
@@ -53,6 +55,8 @@ public class Ticket {
 	 * @return: String representation of a Ticket
 	 */
 	public String toString() {
-		return //use Show's toString?
+		return show.toString() +
+				"\nSeatID: " + this.seatID +
+				"\nPrice: " + this.price;
 	}
 }
