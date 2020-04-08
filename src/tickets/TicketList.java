@@ -9,7 +9,7 @@ import java.util.LinkedList;
  */
 public class TicketList {
 	
-	int availableSeats;
+	private int availableSeats;
 	private LinkedList<Ticket> tickets;
 	
 	public TicketList() {

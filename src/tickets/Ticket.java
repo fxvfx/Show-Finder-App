@@ -28,23 +28,14 @@ public class Ticket {
 	public Show getShow() {
 		return show;
 	}
-	public void setShow(Show show) {
-		this.show = show;
-	}
 	public String getSeatID() {
 		return seatID;
 	}
 	public boolean getIsTaken() {
 		return isTaken;
 	}
-	public void setSeatID(String seatID) {
-		this.seatID = seatID;
-	}
 	public double getPrice() {
 		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
 	}
 	public void setIsTaken(boolean isTaken) {
 		this.isTaken = isTaken;

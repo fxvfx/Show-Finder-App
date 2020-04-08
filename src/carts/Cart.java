@@ -21,10 +21,6 @@ public abstract class Cart {
 		tickets = new TicketList();
 	}
 	
-	public void setTickets(TicketList tickets) {
-		this.tickets = tickets;
-	}
-	
 	/**
 	 * Adds tickets to current ticket list
 	 * @param tickets: list of tickets to add

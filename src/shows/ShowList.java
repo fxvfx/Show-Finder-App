@@ -66,9 +66,10 @@ public class ShowList {
 	}
   
   /**
-   * Searches for a show based on its review
-   * @param review
+   * Searches for a show based on a snippet of its review
+   * @param review a snippet of the review
    * @return Show matching review
+   * TODO: doesn't currently work
    */
 	public Show reviewSearch(String review) {
 		for(int i = 0; i < shows.size(); i++) {

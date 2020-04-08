@@ -15,22 +15,20 @@ import tickets.TicketList;
 
 public class UserAccounts {
 	
-	UserAccount userAccount;
-	TicketList myTicketList;
-	ShoppingCart shoppingCart;	
-	
+	UserAccount userAccount;	
 	private LinkedList<UserAccount> users;
 	
 	public UserAccounts() {
-		
+		users = new LinkedList<UserAccount>();
 	}
 	
 	private void addUser(UserAccount userAccount) {
-		 users.add(userAccount);
+		if(userAccount.isAdmin())
+			users.add(userAccount);
 	}
 	
-	public void removeUser(UserAccount user, UserAccount userAccount) {
-		if(user.isAdmin())
+	public void removeUser(UserAccount userAccount) {
+		if(userAccount.isAdmin())
 			users.remove(userAccount);
 	}
 	

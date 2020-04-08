@@ -81,7 +81,7 @@ public abstract class UserAccount {
 	 * Shows contents of purchased cart
 	 * @return String representation of the purchased cart
 	 */
-	public String purchasedCart() {
+	public String showPurchased() {
 		return this.purchasedCart.toString();
 	}
 	
