@@ -6,20 +6,12 @@ package shows;
  */
 public class Movie extends Show {
 
-	private Movie movie;
+	private String movieSummary;
+	private String releaseDate;
+	private String directorName;
 	
-	public Movie(Movie movie) {
-		this.movie = movie;
-	}
-	
-	@Override
-	public int getTicketCount() {
-		return movie.getTicketCount();
-	}
-
-	@Override
-	public int getReviewList() {
-		return movie.getReviewList();
+	public Movie() {
+		
 	}
 	
 	public String toString() {

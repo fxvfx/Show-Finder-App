@@ -5,20 +5,10 @@ package shows;
 
 public class Concert extends Show {
 	
-	private Concert concert;
+	private String genre;
 	
-	public Concert(Concert concert) {
-		this.concert = concert;
-	}
-
-	@Override
-	public int getTicketCount() {
-		return concert.getTicketCount();
-	}
-
-	@Override
-	public int getReviewList() {
-		return 0;
+	public Concert() {
+		
 	}
 	
 	public String toString() {

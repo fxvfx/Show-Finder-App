@@ -74,4 +74,12 @@ public class SeatTracker {
 	public void refundTicket(Ticket ticket) {
 		seats.refund(ticket);
 	}
+	
+	/**
+	 * String representation of a SeatTracker; simply returns # of available seats
+	 * @return: integer number of available seats
+	 */
+	public String toString() {
+		return Integer.toString(seats.getTicketAmount());
+	}
 }

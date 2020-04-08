@@ -9,10 +9,12 @@ import java.util.LinkedList;
  */
 public class TicketList {
 	
+	int availableSeats;
 	LinkedList<Ticket> tickets;
 	
 	public TicketList() {
 		tickets = new LinkedList<Ticket>();
+		availableSeats = 0;
 	}
 	
 	/**
@@ -20,7 +22,7 @@ public class TicketList {
 	 * @return: amount of tickets
 	 */
 	public int getTicketAmount() {
-		return tickets.size();
+		return availableSeats;
 	}
 	
 	/**
@@ -38,6 +40,7 @@ public class TicketList {
 	 */
 	public void add(Ticket ticket) {
 		tickets.add(ticket);
+		availableSeats++;
 	}
 	
 	/**
