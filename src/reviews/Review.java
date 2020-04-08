@@ -30,6 +30,14 @@ public class Review {
 		return reviewContent;
 	}
 	
+	public int getNumStars() {
+		return this.numStars;
+	}
+	
+	public UserAccount getOwner() {
+		return this.owner;
+	}
+	
 	/**
 	 * Returns a String representation of a Review
 	 * @return: String representing the review

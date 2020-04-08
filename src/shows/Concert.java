@@ -21,6 +21,10 @@ public class Concert extends Show {
 		this.genre = genre;
 	}
 	
+	public String getGenre() {
+		return this.genre;
+	}
+	
 	public String toString() {
 		return super.toString() + "\nGenre: " + genre;
 	}
