@@ -48,14 +48,14 @@ public class SeatTracker {
 	}
 	//TODO: SeatTracker constructor that specifies price, SeatTracker constructor that specifies size
 	
-//	/**
-//	 * Shows the available seats for a Show
-//	 * @return: a String representation of the available seats
-//	 */
-//	public String showAvailableSeats() {
-//		SeatDisplay display = new SeatDisplay(seats);
-//		return display;
-//	}
+	/**
+	 * Shows the available seats for a Show
+	 * @return: a String representation of the available seats
+	 */
+	public String showAvailableSeats() {
+		SeatDisplay display = new SeatDisplay(this);
+		return display.displaySeats();
+	}
 
 	/**
 	 * Buys a ticket
