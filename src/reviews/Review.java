@@ -28,6 +28,6 @@ public class Review {
 	 */
 	public String toString() {
 		return "Review for " + show.getName() + " by " + owner.getName() + 
-				"\n" + numStars + "/5." + "\n" + reviewContent;
+				":\n" + numStars + "/5 stars." + "\n" + reviewContent;
 	}
 }

@@ -25,9 +25,9 @@ public class testDriver {
 		//(Show show, String reviewContent, int numStars, UserAccount owner) {
 		Review a = new Review(aPlay, "that show kinda sucked", 3, john);
 		
-		reviews.addReview(a);
+		aPlay.addReview(a);
 		
-		System.out.println(reviews);
+		System.out.println(aPlay);
 
 	}
 

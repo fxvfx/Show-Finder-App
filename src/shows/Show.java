@@ -1,6 +1,6 @@
 package shows;
 
-import reviews.ReviewList;
+import reviews.*;
 import seats.SeatTracker;
 import java.util.LinkedList;
 
@@ -72,6 +72,13 @@ public abstract class Show {
 		this.ageRestriction = ageRestriction;
 	}
 	
+	/**
+	 * adds a Review to the show's list of Reviews
+	 * @param review: review to be added
+	 */
+	public void addReview(Review review) {
+		reviews.addReview(review);
+	}
 	
 	@Override
 	public String toString() {
@@ -85,7 +92,7 @@ public abstract class Show {
 				"\nActor list: " + actorList +
 				"\nAge restriction: " + ageRestriction +
 				"\n\nNumber of seats still available: " + seats + 
-				"\n\nReviews=" + reviews; //TODO: reviews' toString
+				"\n\nReviews:\n" + reviews;
 	}
 
 }

@@ -22,7 +22,7 @@ public class Play extends Show {
 	}
 
 	public String toString() {
-		return super.toString() + "\n Play Summary: " + playSummary;
+		return super.toString() + "\nPlay Summary: " + playSummary;
 	}
 	
 }

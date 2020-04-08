@@ -7,12 +7,11 @@ import java.util.LinkedList;
  * @author Francis Villanueva
  *
  */
-
 public class ReviewList {
 
 	private LinkedList<Review> reviews;
 
-	public void reviewList() {
+	public ReviewList() {
 		reviews = new LinkedList<Review>();
 	}
 	
