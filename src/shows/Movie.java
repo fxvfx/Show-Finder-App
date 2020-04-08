@@ -28,6 +28,22 @@ public class Movie extends Show {
 		this.mpaRating = mpaRating;
 	}
 	
+	public String getMovieSummary() {
+		return this.movieSummary;
+	}
+	
+	public String getReleaseDate() {
+		return this.releaseDate;
+	}
+	
+	public String getDirectorName() {
+		return this.directorName;
+	}
+	
+	public MovieRating getMpaRating() {
+		return this.mpaRating;
+	}
+	
 	public String toString() {
 		return super.toString() + "\nMovie Summary: " + movieSummary 
 				+ "\nRelease Date: " + releaseDate + "\nDirector: " + directorName + "Rating" + mpaRating;

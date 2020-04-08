@@ -21,6 +21,10 @@ public class Play extends Show {
 				actorList, ageRestriction, category);
 		this.playSummary = playSummary;
 	}
+	
+	public String getPlaySummary() {
+		return playSummary;
+	}
 
 	public String toString() {
 		return super.toString() + "\nPlay Summary: " + playSummary;

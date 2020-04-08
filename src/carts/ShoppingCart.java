@@ -44,6 +44,18 @@ public class ShoppingCart extends Cart{
 	}
 	
 	/**
+	 * Buys tickets to a specific show at a specific seat
+	 * @param amount: number of tickets to be bought
+	 * @param show: the show the tickets will be bought from
+	 * @param seat: the first desired seat
+	 */
+	public void buySeat(int amount, Show show, String seat) {
+		if(amount < 0)
+			return;
+		TicketList boughtTickets = show.getSeats().buyTicket(amount, Integer.parseInt(seat.substring(0,0)), seat.substring(1));
+		addTickets(boughtTickets);
+	}
+	/**
 	 * Buys all the remaining tickets to a specific show
 	 * @param show: the show to be bought out
 	 */

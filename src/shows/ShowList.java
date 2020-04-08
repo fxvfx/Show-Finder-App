@@ -16,10 +16,23 @@ import reviews.Review;
  * @editor Francis Villanueva
  */
 public class ShowList {
-	private LinkedList<Show> shows;
+	private static ShowList showList = null;
+	private static LinkedList<Show> shows;
   
 	public ShowList() {
 		shows = new LinkedList<Show>();
+	}
+	
+	public static ShowList getInstance() {
+		if(showList == null) {
+			showList = new ShowList();
+		}
+		
+		return showList;
+	}
+	
+	public LinkedList<Show> getShows() {
+		return shows;
 	}
 	/**
 	 * Inserts a show into the list of shows

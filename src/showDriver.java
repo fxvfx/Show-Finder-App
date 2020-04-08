@@ -198,7 +198,19 @@ public class showDriver {
 		System.out.println("How many tickets would you like to buy?");
 		int ticketCount = Integer.parseInt(getInputLine(in)); //TODO: error check; try/catch loop?
 		
-		system.buyTicket(ticketCount, wantedShow);
+		System.out.println("Would you like to pick your seats?");
+		String choice = getInputLine(in);
+		
+		if(choice.equals("yes")) {
+			wantedShow.getSeats().showAvailableSeats();
+			
+			System.out.println("Enter the row number and the seat letter");
+			String seat = getInputLine(in);
+			system.buyTicket(ticketCount, wantedShow, seat);
+		} else {
+			system.buyTicket(ticketCount, wantedShow);
+		}
+		
 		System.out.println("Ticket successfully purchased.");
 	}
 	
