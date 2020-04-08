@@ -26,6 +26,14 @@ public class TicketList {
 	}
 	
 	/**
+	 * Returns total number of seats
+	 * @return: integer number of seats
+	 */
+	public int getNumSeats() {
+		return tickets.size();
+	}
+	
+	/**
 	 * Retrieves a ticket at an indicated index
 	 * @param index: index of ticket
 	 * @return: ticket
@@ -59,6 +67,14 @@ public class TicketList {
 	public void refund(Ticket ticket) {
 		ticket.setIsTaken(false);
 		availableSeats++;
+	}
+	
+	/**
+	 * Fully removes ticket from TicketList
+	 * @param ticket: ticket to be removed
+	 */
+	public void remove(Ticket ticket) {
+		tickets.remove(ticket);
 	}
 	
 }

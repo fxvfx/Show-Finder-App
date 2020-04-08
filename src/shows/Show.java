@@ -22,6 +22,7 @@ public abstract class Show {
 	protected double ticketPrice;
 	protected LinkedList<String> actorList;
 	protected int ageRestriction;
+	protected String category;
 	
 	//Getters
 	public SeatTracker getSeats() {
@@ -54,10 +55,13 @@ public abstract class Show {
 	public int getAgeRestriction() {
 		return ageRestriction;
 	}
+	public String getCategory() {
+		return category;
+	}
 
 	public Show(ReviewList reviews, String name, String showTime, String showDate, String venueName,
-			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction) {
-		super();
+			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction, 
+			String category) {
 		
 		seats = new SeatTracker(this,ticketPrice);
 
@@ -70,6 +74,7 @@ public abstract class Show {
 		this.ticketPrice = ticketPrice;
 		this.actorList = actorList;
 		this.ageRestriction = ageRestriction;
+		this.category = category;
 	}
 	
 	/**
@@ -84,6 +89,7 @@ public abstract class Show {
 	public String toString() {
 		return "Show information:" +
 				"\n\nShow name: " + name +
+				"\nCategory: " + category +
 				"\nShow time: " + showTime +
 				"\nShow date: " + showDate +
 				"\nVenue name: " + venueName +

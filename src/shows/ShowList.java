@@ -8,6 +8,13 @@ package shows;
 
 import java.util.LinkedList;
 
+import reviews.Review;
+
+/**
+ * Keeps track of the shows in the system
+ * @author Brody Norton
+ * @editor Francis Villanueva
+ */
 public class ShowList {
 	private LinkedList<Show> shows;
   
@@ -37,7 +44,7 @@ public class ShowList {
 	 */
 	public Show categorySearch(String category) {
 		for(int i = 0; i < shows.size(); i++) {
-			if(shows.get(i).getDescription.getCategory().equals(category)) {
+			if(shows.get(i).getCategory().equals(category)) {
 				return shows.get(i);
 			}
 		}
@@ -51,7 +58,7 @@ public class ShowList {
    */
 	public Show nameSearch(String name) {
 	  for(int i = 0; i < shows.size(); i++) {
-		  if(shows.get(i).getDescription().getName().equals(name)) {
+		  if(shows.get(i).getName().equals(name)) {
 			  return shows.get(i);
 		  }
 	  }
@@ -63,10 +70,10 @@ public class ShowList {
    * @param review
    * @return Show matching review
    */
-	public Show reviewSearch(String review) {
+	public Show reviewSearch(Review review) {
 		for(int i = 0; i < shows.size(); i++) {
-			for(int j = 0; j < shows.get(i).getReviews.size(); j++)
-				if(shows.get(i).getReviews.get(j).contains(review)) {
+			for(int j = 0; j < shows.get(i).getReviews().size(); j++)
+				if(shows.get(i).getReviews().contains(review)) {
 					return shows.get(i);
 				}
 		}
@@ -80,7 +87,7 @@ public class ShowList {
 	 */
 	public Show showTimeSearch(String showTime) {
 		for(int i = 0; i < shows.size(); i++) {
-			if(shows.get(i).description.getShowTime().equals(showTime)) {
+			if(shows.get(i).getShowTime().equals(showTime)) {
 				return shows.get(i);
 			}
 	    }

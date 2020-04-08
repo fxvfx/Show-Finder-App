@@ -33,6 +33,23 @@ public class ReviewList {
 	}
 	
 	/**
+	 * Checks if a given review is within the list
+	 * @param review: review to be checked
+	 * @return: true if review is in  the list, false otherwise
+	 */
+	public boolean contains(Review review) {
+		return reviews.contains(review);
+	}
+	
+	/**
+	 * Returns number of reviews in list
+	 * @return: how many reviews are in the list
+	 */
+	public int size() {
+		return reviews.size();
+	}
+	
+	/**
 	 * Returns a String output of all the Reviews in the ReviewList
 	 * @return: String representing all the reviews in the list
 	 */

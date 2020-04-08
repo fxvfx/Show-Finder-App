@@ -58,6 +58,7 @@ public class SeatTracker {
 	}
 
 	/**
+	 * TODO: possibly redundant b/c it's just buyTicket with (1)
 	 * Buys a ticket
 	 * @return: the ticket that was bought
 	 */
@@ -69,6 +70,22 @@ public class SeatTracker {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Buys multiple tickets
+	 * @return: a TicketList of the tickets that were bought
+	 */
+	public TicketList buyTicket(int amount) {
+		TicketList purchasedTickets = new TicketList();
+		
+		for(int i=0; i<amount; i++) {
+			if(seats.get(i) != null && seats.get(i).getIsTaken() == false) {
+				seats.purchase(seats.get(i));
+				purchasedTickets.add(seats.get(i));
+			}
+		}
+		return purchasedTickets;
 	}
 
 	/**
