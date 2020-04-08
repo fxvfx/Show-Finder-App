@@ -1,8 +1,13 @@
 package shows;
+
+import java.util.LinkedList;
+
+import reviews.ReviewList;
+
 /**
- * 
+ * Represents a movie in the system
  * @author tariqscott
- *
+ * @editor Michael Norton
  */
 public class Movie extends Show {
 
@@ -10,11 +15,18 @@ public class Movie extends Show {
 	private String releaseDate;
 	private String directorName;
 	
-	public Movie() {
-		
+	public Movie(ReviewList reviews, String name, String showTime, String showDate, String venueName,
+			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction, 
+			String movieSummary, String releaseDate, String directorName) {
+		super(reviews, name, showTime, showDate, venueName, location, ticketPrice,
+				actorList, ageRestriction);
+		this.movieSummary = movieSummary;
+		this.releaseDate = releaseDate;
+		this.directorName = directorName;
 	}
 	
 	public String toString() {
-		return movie + " is about";
+		return super.toString() + "\nMovie Summary: " + movieSummary 
+				+ "\nRelease Date: " + releaseDate + "\nDirector: " + directorName;
 	}
 }
