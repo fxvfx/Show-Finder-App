@@ -15,7 +15,6 @@ import tickets.TicketList;
 
 public class UserAccounts {
 	
-	UserAccount userAccount;	
 	private LinkedList<UserAccount> users;
 	
 	public UserAccounts() {
