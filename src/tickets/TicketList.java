@@ -77,4 +77,11 @@ public class TicketList {
 		tickets.remove(ticket);
 	}
 	
+	/**
+	 * Returns a String representation of the TicketList
+	 * @return String representation of the tickets in the list
+	 */
+	public String toString() {
+		return tickets.toString();
+	}
 }

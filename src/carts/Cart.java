@@ -46,10 +46,10 @@ public abstract class Cart {
 	}
 	
 	/**
-	 * String representation of the contents of the cart
-	 * @return: String displaying contents of the cart
+	 * String representation of the purchased tickets
+	 * @return String representation of the Cart's tickets
 	 */
-	 public String toString() {
+	public String showTickets() {
 		String ticketString = "";
 		for(int i=0; i<tickets.getTicketAmount(); i++) {
 			ticketString += tickets.get(i) + "\n\n";
@@ -57,4 +57,15 @@ public abstract class Cart {
 		 
 	  	return "Your tickets are:\n\n" + ticketString; 
 	  }
+	
+	/**
+	 * String representation of the contents of the cart
+	 * @return: String displaying contents of the cart
+	 */
+	 public String toString() {
+		String cartContents = "";
+		cartContents += showTickets();
+		
+		return cartContents;
+	 }
 }

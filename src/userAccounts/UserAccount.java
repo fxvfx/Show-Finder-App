@@ -86,6 +86,14 @@ public abstract class UserAccount {
 	}
 	
 	/**
+	 * Shows the user's purchased tickets
+	 * @return String representation of the user's purchased tickets
+	 */
+	public String showTickets() {
+		return this.purchasedCart.showTickets();
+	}
+	
+	/**
 	 * Writes a review with the user as the owner
 	 * @param show show the review belongs to
 	 * @param reviewContent String content of the review

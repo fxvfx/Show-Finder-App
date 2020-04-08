@@ -13,4 +13,12 @@ public class Guest extends UserAccount {
 		super("Guest" + (guestNum+1), null, false);
 		guestNum++;
 	}
+	
+	/**
+	 * Returns string representation of a Guest
+	 * @return String representation of the Guest
+	 */
+	public String toString() {
+		return this.name;
+	}
 }

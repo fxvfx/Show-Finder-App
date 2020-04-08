@@ -23,6 +23,14 @@ public class Review {
 	}
 	
 	/**
+	 * Returns the content of a review
+	 * @return the review content
+	 */
+	public String getReviewContent() {
+		return reviewContent;
+	}
+	
+	/**
 	 * Returns a String representation of a Review
 	 * @return: String representing the review
 	 */

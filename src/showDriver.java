@@ -1,15 +1,14 @@
 import java.util.Scanner;
 
 import commands.*;
+import shows.Show;
 
 /**
  * Controls the User Input Interface for the Show Finder Application
  * @author Francis Villanueva (CSCE 247-001) //TODO team name
  *
- * TODO: possibly implement an InputHandler class and its associated Commands
  */
 public class showDriver {
-	
 	private static CommandLogic system;
 	private static Scanner in;
 	

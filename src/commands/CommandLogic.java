@@ -3,10 +3,12 @@ package commands;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import shows.Show;
 import shows.ShowList;
 import userAccounts.Guest;
 import userAccounts.StandardUser;
 import userAccounts.UserAccount;
+import userAccounts.UserAccounts;
 
 /**
  * Handles the UI's command logic for interfacing w/ the system
@@ -54,7 +56,7 @@ public class CommandLogic {
 	/**
 	 * @return: the list of users
 	 */
-	public UserAccount getUsers() {
+	public UserAccounts getUsers() {
 		return this.users;
 	}
 	
@@ -119,13 +121,13 @@ public class CommandLogic {
 		else if(searchType.contentEquals("review"))
 			wantedShow = shows.reviewSearch(parameter);
 		else if(searchType.contentEquals("time"))
-			wantedShow = shows.timeSearch(parameter);
+			wantedShow = shows.showTimeSearch(parameter);
 		
 		return wantedShow;
 	}
 	
 	public void writeReview(Show show, int starCount, String description) {
-		currentUser.writeReview(show, starCount, description);
+		currentUser.writeReview(show, description, starCount);
 	}
 	
 	public String showTickets() {

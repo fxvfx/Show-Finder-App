@@ -70,7 +70,7 @@ public class ShowList {
    * @param review
    * @return Show matching review
    */
-	public Show reviewSearch(Review review) {
+	public Show reviewSearch(String review) {
 		for(int i = 0; i < shows.size(); i++) {
 			for(int j = 0; j < shows.get(i).getReviews().size(); j++)
 				if(shows.get(i).getReviews().contains(review)) {

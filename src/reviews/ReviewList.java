@@ -42,6 +42,19 @@ public class ReviewList {
 	}
 	
 	/**
+	 * Checks if a given string is located anywhere in a review in the ReviewList
+	 * @param phrase phrase to be checked for
+	 * @return true if phrase is found, false otherwise
+	 */
+	public boolean contains(String phrase) {
+		for(int i=0; i<reviews.size(); i++) {
+			if(reviews.get(i).getReviewContent().contains(phrase))
+				return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Returns number of reviews in list
 	 * @return: how many reviews are in the list
 	 */
