@@ -7,6 +7,7 @@ import java.util.LinkedList;
 /**
  * 
  * @author Tariq Scott 
+ * @editor Francis Villanueva
  *
  */
 public abstract class Show {
@@ -54,10 +55,12 @@ public abstract class Show {
 		return ageRestriction;
 	}
 
-	public Show(SeatTracker seats, ReviewList reviews, String name, String showTime, String showDate, String venueName,
+	public Show(ReviewList reviews, String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction) {
 		super();
-		this.seats = seats;
+		
+		seats = new SeatTracker(this,ticketPrice);
+
 		this.reviews = reviews;
 		this.name = name;
 		this.showTime = showTime;

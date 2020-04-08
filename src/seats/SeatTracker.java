@@ -12,17 +12,16 @@ public class SeatTracker {
 
 	public final int ROW_NUM = 5;
 	public final String[] SEAT_LETTERS = {"A", "B", "C", "D", "E"};
-	public final double DEFAULT_PRICE = 15.00;	
 	
 	private TicketList seats;
 	
-	public SeatTracker(Show show) {
+	public SeatTracker(Show show, double ticketPrice) {
 		seats = new TicketList();
 		//for now, whenever SeatTracker is constructed, it always has 25 seats max
 		for(int i=0; i<ROW_NUM; i++) {
 			for(int j=0; j<SEAT_LETTERS.length; j++) {
 				String seatID = i + SEAT_LETTERS[j];
-				Ticket newTicket = new Ticket(show, seatID, DEFAULT_PRICE, false);
+				Ticket newTicket = new Ticket(show, seatID, ticketPrice, false);
 				seats.add(newTicket);
 			}
 		}

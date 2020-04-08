@@ -14,9 +14,10 @@ public class Play extends Show {
 	
 	private String playSummary;
 	
-	public Play(SeatTracker seats, ReviewList reviews, String name, String showTime, String showDate, String venueName,
+	public Play(ReviewList reviews, String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction, String playSummary) {
-		super(seats, reviews, name, //got lazy at this point);
+		super(reviews, name, showTime, showDate, venueName, location, ticketPrice,
+				actorList, ageRestriction);
 		this.playSummary = playSummary;
 	}
 

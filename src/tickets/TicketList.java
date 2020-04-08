@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class TicketList {
 	
 	int availableSeats;
-	LinkedList<Ticket> tickets;
+	private LinkedList<Ticket> tickets;
 	
 	public TicketList() {
 		tickets = new LinkedList<Ticket>();
@@ -47,8 +47,8 @@ public class TicketList {
 	 * Purchases a ticket from the TicketList by setting its status to "taken"
 	 * @param index: index of ticket to be removed
 	 */
-	public void purchase(Ticket ticket) { //similar to removeFirst except at index
-		ticket.setIsTaken(false);
+	public void purchase(Ticket ticket) {
+		ticket.setIsTaken(true);
 	}
 	
 	/**

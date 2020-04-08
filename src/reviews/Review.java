@@ -1,25 +1,33 @@
 /**
- * 
+ * Specifies a Review object for a Show
+ * @author Francis Villanueva
  */
 
 package reviews;
 
+import shows.Show;
+import userAccounts.UserAccount;
+
 public class Review {
 	
-	//include getters for each variable please! (you instatiated them all correctly though, good job)
 	private String reviewContent;
 	private int numStars;
 	private UserAccount owner;
 	private Show show;
 
 	public Review(Show show, String reviewContent, int numStars, UserAccount owner) {
-		//this is your alternate (and only) constructor for the Review class; 
+		this.show = show;
+		this.reviewContent = reviewContent;
+		this.owner = owner;
+		this.numStars = numStars;
 	}
 	
+	/**
+	 * Returns a String representation of a Review
+	 * @return: String representing the review
+	 */
 	public String toString() {
-		return " "; //you know what to do here :)
+		return "Review for " + show.getName() + " by " + owner.getName() + 
+				"\n" + numStars + "/5." + "\n" + reviewContent;
 	}
-	
-	//also please comment your methods and add your descriptive header, like we've been doing for our individual
-	// GitHub assignments!
 }
