@@ -173,6 +173,12 @@ public class CommandLogic {
 		currentUser.getShoppingCart().buyTicket(amount, show);
 	}
 	
+	/**
+	 * Buys a number of tickets starting at a specific seat
+	 * @param amount amount of tickets bought
+	 * @param show the show that the tickets are being bought from
+	 * @param seat the first seat to be purchased
+	 */
 	public void buyTicket(int amount, Show show, String seat) {
 		currentUser.getShoppingCart().buySeat(amount, show, seat);
 	}
