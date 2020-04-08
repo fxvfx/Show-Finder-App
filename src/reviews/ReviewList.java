@@ -15,6 +15,10 @@ public class ReviewList {
 		reviews = new LinkedList<Review>();
 	}
 	
+	public LinkedList<Review> getReviews() {
+		return reviews;
+	}
+	
 	/**
 	 * Adds a review to the list of reviews
 	 * @param review: review to be added
