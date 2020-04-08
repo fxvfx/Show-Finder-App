@@ -87,7 +87,32 @@ public class SeatTracker {
 		}
 		return purchasedTickets;
 	}
-
+	
+	/**
+	 * Buys tickets starting with specific seat
+	 * @param amount: of tickets to buy
+	 * @param row: of seat
+	 * @param seat: letter in row
+	 * @return: TicketList of tickets bought
+	 */
+	public TicketList buyTicket(int amount, int row, String seat) {
+		TicketList purchasedTickets = new TicketList();
+		int seatNumber = row * ROW_NUM;
+		for(int i = 0; i < SEAT_LETTERS.length; i++) {
+			if(SEAT_LETTERS[i].equals(seat)) {
+				break;
+			}
+			seatNumber ++;
+		}
+		
+		for(int i = 0; i < amount; i++) {
+			if(seats.get(seatNumber + i) != null && !seats.get(seatNumber + i).getIsTaken()) {
+				seats.purchase(seats.get(seatNumber + i));
+				purchasedTickets.add(seats.get(seatNumber + i));
+			}
+		}
+		return purchasedTickets;
+	}
 	/**
 	 * Buys the rest of the available tickets to a show
 	 * @return: the TicketList of tickets that were bought

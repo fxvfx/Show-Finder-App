@@ -173,6 +173,10 @@ public class CommandLogic {
 		currentUser.getShoppingCart().buyTicket(amount, show);
 	}
 	
+	public void buyTicket(int amount, Show show, String seat) {
+		currentUser.getShoppingCart().buySeat(amount, show, seat);
+	}
+	
 	//TODO: figure out better functionality for adding all shows
 	
 	/**
