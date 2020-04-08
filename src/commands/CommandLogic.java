@@ -220,7 +220,7 @@ public class CommandLogic {
 		else if(mpaRating.equals("NC17"))
 			MPA = MovieRating.NC17;
 		
-		Movie newMovie = new Movie(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice,
+		Movie newMovie = new Movie(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, category, movieSummary, releaseDate, directorName, MPA);
 		shows.addShow(newMovie);
 		
@@ -244,7 +244,7 @@ public class CommandLogic {
 		if(!currentUser.isAdmin())
 			return;
 		
-		Play newPlay = new Play(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice,
+		Play newPlay = new Play(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, playSummary, genre);
 		shows.addShow(newPlay);
 		
@@ -268,7 +268,7 @@ public class CommandLogic {
 		if(!currentUser.isAdmin())
 			return;
 		
-		Concert newConcert = new Concert(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice,
+		Concert newConcert = new Concert(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, genre);
 		shows.addShow(newConcert);
 	}

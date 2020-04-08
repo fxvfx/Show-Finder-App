@@ -63,13 +63,13 @@ public abstract class Show {
 		return category;
 	}
 
-	public Show(ReviewList reviews, String name, String showTime, String showDate, String venueName,
+	public Show(String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, String actorList, int ageRestriction, 
 			String category) {
 		
 		seats = new SeatTracker(this,ticketPrice);
 
-		this.reviews = reviews;
+		this.reviews = new ReviewList();
 		this.name = name;
 		this.showTime = showTime;
 		this.showDate = showDate;

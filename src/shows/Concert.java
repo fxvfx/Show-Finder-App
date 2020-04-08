@@ -13,10 +13,10 @@ public class Concert extends Show {
 	
 	private String genre;
 	
-	public Concert(ReviewList reviews, String name, String showTime, String showDate, String venueName,
+	public Concert(String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, String actorList, int ageRestriction, 
 			String genre) {
-		super(reviews, name, showTime, showDate, venueName, location, ticketPrice,
+		super(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, genre);
 		this.genre = genre;
 	}
