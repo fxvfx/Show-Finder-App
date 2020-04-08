@@ -14,25 +14,6 @@ public class ShoppingCart {
 //	private ConcessionList cartConcessions;
 //	private CouponList cartCoupons;
 	
-	 
-	  /*public void addCoupon(Coupon coupon) {
-	  	 coupon.add();
-	  }
-	  
-	  public void buyConcession(Concession concession) {
-	  	 concession.add();
-	  }*/
-	  
-		//TODO can't work on these two at the moment
-		/*
-	  Ticket buyTicket(SeatTracker ticket) {
-
-	 }
-	 
-	 Ticket removeTicket(SeatTracker ticket) {
-	 	ticket.remove();
-	 		} */
-	
 	/**
 	 * 
 	 * @return:
@@ -44,7 +25,9 @@ public class ShoppingCart {
 	public double getTotal() {
 		double total = 0.0;
 		
-		//calculate total here
+		for(int i=0; i<cartTickets.; i++) {
+			
+		}
 		
 		netCheckoutPrice = total;
 		return netCheckoutPrice;

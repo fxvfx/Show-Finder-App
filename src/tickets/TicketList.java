@@ -49,6 +49,7 @@ public class TicketList {
 	 */
 	public void purchase(Ticket ticket) {
 		ticket.setIsTaken(true);
+		availableSeats--;
 	}
 	
 	/**
@@ -57,6 +58,7 @@ public class TicketList {
 	 */
 	public void refund(Ticket ticket) {
 		ticket.setIsTaken(false);
+		availableSeats++;
 	}
 	
 }
