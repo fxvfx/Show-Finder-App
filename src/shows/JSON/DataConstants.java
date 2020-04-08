@@ -22,7 +22,6 @@ public abstract class DataConstants {
 	
 	//for Movie
 	protected static final String MOVIE_FILE = "src/movies.json";
-	protected static final String MOVIE_RATING = "mpaRating";
 	protected static final String MOVIE_SUM = "movieSummary";
 	protected static final String REL_DATE = "releaseDate";
 	protected static final String DIRECTOR = "directorName";
