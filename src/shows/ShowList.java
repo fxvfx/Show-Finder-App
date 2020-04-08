@@ -25,7 +25,7 @@ public class ShowList {
 	 * Inserts a show into the list of shows
 	 * @param show The show to be inserted
 	 */
-	private void addShow(Show show) {
+	public void addShow(Show show) {
 		shows.add(show);
 	}
   
