@@ -1,22 +1,31 @@
 package tickets;
 
+
 /**
-*
-* author: hannah killian
-*
-**/
+ * Specifies the methods needed for a CartList
+ * @author Francis Villanueva
+ *
+ */
+abstract class CartList<T> {
+	/**
+	 * calculates total price of everything in the List
+	 * @return: total price
+	 */
+	public abstract double calculateTotal();
 
-public interface CartList {
-	//TODO: give all these methods their corresponding Javadoc comments por favor!
-	// the nice thing is that, when you do the comments in the interface, you don't
-	// have to do it for their corresponding methods in TicketList :)
-	
-	
-	public double calculateTotal();
+	/**
+	 * returns a String representation of the List
+	 * @return: a String representation of the list
+	 */
+	public abstract String toString();
 
-	public String toString();
+	/**
+	 * adds an item to the List
+	 */
+	public abstract void addItem();
 
-	public void addItem();
-
-	public void removeItem();
+	/**
+	 * removes an item to the List
+	 */
+	public abstract void removeItem();
 }

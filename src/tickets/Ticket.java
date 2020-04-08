@@ -2,7 +2,7 @@ package tickets;
 /**
  *
  * @author hannah killian
- *
+ * @edited Francis Villanueva
  */
 
 public class Ticket {
@@ -10,20 +10,16 @@ public class Ticket {
 	private Show show;
 	private String seatID;
 	private double price;
+	private boolean isTaken;
+//	private boolean handicapped;
 
-	// default constructor
-	public Ticket() {
-		showName = null;
-		showTime = null;
-		seatID = null;
-		price = 0.0;
-	}
-	// parameterized constructors
-	public Ticket(String showName, String showTime, String seatID, double price) {
-		this.showName = showName;
-		this.showTime = showTime;
+	// parameterized constructor
+	public Ticket(Show show, String seatID, double price, boolean isTaken) {
+		this.show = show;
 		this.seatID = seatID;
 		this.price = price;
+		
+		this.isTaken = false;
 	}
 
 	// getters and setters
@@ -36,6 +32,9 @@ public class Ticket {
 	public String getSeatID() {
 		return seatID;
 	}
+	public boolean getIsTaken() {
+		return isTaken;
+	}
 	public void setSeatID(String seatID) {
 		this.seatID = seatID;
 	}
@@ -45,12 +44,15 @@ public class Ticket {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public void setIsTaken(boolean isTaken) {
+		this.isTaken = isTaken;
+	}
 
-	//TODO: do me a favor and a) make a method comment for this and b) make to toString() a bit more descriptive;
-	// if I call ticket.toString() i want to be able to tell what all the output is please
-	// also, instead of the "showName" and "showTime" variables on the UML, we're going to be using 
-	// the "Show" object so use like show.getName() and etc. in place of those
+	/**
+	 * Returns a String representing a Ticket
+	 * @return: String representation of a Ticket
+	 */
 	public String toString() {
-		return showName + showTime + seatID + price;
+		return //use Show's toString?
 	}
 }
