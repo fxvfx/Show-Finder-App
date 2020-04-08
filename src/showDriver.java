@@ -49,7 +49,7 @@ public class showDriver {
 				System.out.println("Command not recognized.  Please try again.\n\n");	 
 		}
 		
-		System.out.println("Login successful! Welcome, " + system.getUser().getName() + ".");
+		System.out.println("\nLogin successful! Welcome, " + system.getUser().getName() + ".");
 		
 		
 		//Interface block
@@ -62,28 +62,35 @@ public class showDriver {
 				exit();
 			else if(command.contentEquals("commands")) {
 				System.out.print("Possible commands are: ");
-				for(String commandName : system.getSysCommands())
-					System.out.print(commandName + ", ");
-				System.out.println(".");
-			}
-			else {
-				if(command.contentEquals("search"))
-					this.search();
-				else if(command.contentEquals("writeReview"))
-					this.writeReview();
-				else if(command.contentEquals("buyTicket"))
-					this.buyTicket();
-				else if(command.contentEquals("showTickets")) //could probably call system directly
-					this.showTickets();
-				else if(command.contentEquals("printTickets")) //could probably call system directly
-					this.printTickets();
+				if(!system.isAdmin()) {
+					for(int i=0; i<system.getSysCommands().size()-1; i++)
+						System.out.print(system.getSysCommands().get(i) + ", ");
+					System.out.println(system.getSysCommands().get(system.getSysCommands().size()-1) + ".\n");
 				
-				//admin restricted
-				else if(command.contentEquals("addShow"))
-					this.addShow(); 
-				else
-					System.out.println("Command not recognized.  Please try again.\n\n");	 
-			}
+					if(command.contentEquals("search"))
+						this.search();
+					else if(command.contentEquals("writeReview"))
+						this.writeReview();
+					else if(command.contentEquals("buyTicket"))
+						this.buyTicket();
+					else if(command.contentEquals("showTickets")) //could probably call system directly
+						this.showTickets();
+					else if(command.contentEquals("printTickets")) //could probably call system directly
+						this.printTickets();
+					else
+						System.out.println("Command not recognized.  Please try again.\n\n");	 
+					}
+				}
+				else {
+					for(int i=0; i<system.getAdminCommands().size()-1; i++)
+						System.out.print(system.getAdminCommands().get(i) + ", ");
+					System.out.println(system.getAdminCommands().get(system.getAdminCommands().size()-1) + ".\n");
+				
+					if(command.contentEquals("addShow"))
+						this.addShow();
+					else
+						System.out.println("Command not recognized.  Please try again.\n\n");	 
+				}
 		}
 	}
 	
@@ -169,7 +176,7 @@ public class showDriver {
 		String description = getInputLine(in);
 		
 		system.writeReview(reviewedShow, starCount,description);
-		System.out.println("Review added to " + reviewedShow.getDescription.getName());
+		System.out.println("Review added to " + reviewedShow.getName());
 	}
 	
 	/**
@@ -188,10 +195,11 @@ public class showDriver {
 			wantedShow = system.search("name",showName);
 		}
 		
-		system.buyTicket(wantedShow);
-		System.out.println("Ticket successfully purchased.");
+		System.out.println("How many tickets would you like to buy?");
+		int ticketCount = Integer.parseInt(getInputLine(in)); //TODO: error check; try/catch loop?
 		
-		//TODO: seat tracker functionality as well
+		system.buyTicket(ticketCount, wantedShow);
+		System.out.println("Ticket successfully purchased.");
 	}
 	
 	/**
@@ -215,7 +223,90 @@ public class showDriver {
 		if(!system.getUser().isAdmin())
 			System.out.println("Command not available for non-admin users.");
 		else {
-			//TODO: a bunch of scanner statements to get information about a show
+			System.out.println("What type of show would you like to add?  Your choices are: movie, concert, and play.");
+			String showType = getInputLine(in);
+			
+			while(true) {
+				if(showType.contentEquals("movie")) {
+					System.out.println("Please input show name, show times, show date,"
+							+ "venue name, location, ticket price, actor list,"
+							+ "age restriction, and genre.");
+					
+					String name = getInputLine(in);
+					String showtime = getInputLine(in);
+					String showdate = getInputLine(in);
+					String venue = getInputLine(in);
+					String location = getInputLine(in);
+					double price = Double.parseDouble(getInputLine(in));
+					String actorList = getInputLine(in);
+					int ageRestriction = Integer.parseInt(getInputLine(in));
+					
+					System.out.println("Now please input the movie category, movie summary, release date,"
+							+ "director name, and MPA rating of the movie {G, PG, PG13, R, NC17}.");
+					
+					String category = getInputLine(in);
+					String movieSummary = getInputLine(in);
+					String releaseDate = getInputLine(in);
+					String directorName = getInputLine(in);
+					String mpaRating = getInputLine(in);
+					
+					system.addMovie(name, showtime, showdate, venue, 
+							location, price, actorList, ageRestriction, 
+							category, movieSummary, releaseDate, directorName, mpaRating);
+					break;
+				}
+				else if(showType.contentEquals("concert")) {
+					System.out.println("Please input show name, show times, show date,"
+							+ "venue name, location, ticket price, actor list,"
+							+ "age restriction, and genre.");
+					
+					String name = getInputLine(in);
+					String showtime = getInputLine(in);
+					String showdate = getInputLine(in);
+					String venue = getInputLine(in);
+					String location = getInputLine(in);
+					double price = Double.parseDouble(getInputLine(in));
+					String actorList = getInputLine(in);
+					int ageRestriction = Integer.parseInt(getInputLine(in));
+					
+					System.out.println("Now please input the concert genre.");
+					
+					String genre = getInputLine(in);
+					
+					system.addConcert(name, showtime, showdate, venue, 
+							location, price, actorList, ageRestriction, 
+							genre);
+					break;
+				}
+				else if(showType.contentEquals("play")) {
+					System.out.println("Please input show name, show times, show date,"
+							+ "venue name, location, ticket price, actor list,"
+							+ "age restriction, and genre.");
+					
+					String name = getInputLine(in);
+					String showtime = getInputLine(in);
+					String showdate = getInputLine(in);
+					String venue = getInputLine(in);
+					String location = getInputLine(in);
+					double price = Double.parseDouble(getInputLine(in));
+					String actorList = getInputLine(in);
+					int ageRestriction = Integer.parseInt(getInputLine(in));
+					
+					System.out.println("Now please input the play summary and the play category.");
+					
+					String summary = getInputLine(in);
+					String category = getInputLine(in);
+					
+					system.addPlay(name, showtime, showdate, venue, 
+							location, price, actorList, ageRestriction, 
+							summary, category);
+					break;
+					
+				}
+				else
+					System.out.println("Type not recognized. Please try again.");
+			}
+			System.out.println("Show successfully added.");
 		}
 	}
 	

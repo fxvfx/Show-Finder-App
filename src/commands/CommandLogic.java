@@ -3,16 +3,13 @@ package commands;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import shows.Show;
-import shows.ShowList;
-import userAccounts.Guest;
-import userAccounts.StandardUser;
-import userAccounts.UserAccount;
-import userAccounts.UserAccounts;
+import reviews.ReviewList;
+import shows.*;
+import userAccounts.*;
 
 /**
  * Handles the UI's command logic for interfacing w/ the system
- * @author Francis Villanueva (CSCE 247-001) //TODO zteam name
+ * @author Francis Villanueva (CSCE 247-001) //TODO team name
  *
  */
 public class CommandLogic {
@@ -25,7 +22,10 @@ public class CommandLogic {
 			));	
 	
 	public static final LinkedList<String> sysCommands = new LinkedList<String>(Arrays.asList(
-			"search", "writeReview", "buyTicket", "showTickets", "printTickets",
+			"search", "writeReview", "buyTicket", "showTickets", "printTickets"
+			));
+	
+	public static final LinkedList<String> adminCommands = new LinkedList<String>(Arrays.asList(
 			"addShow" //administrator-restricted commands
 			));
 	
@@ -38,7 +38,7 @@ public class CommandLogic {
 	public CommandLogic() {
 		currentUser = null;
 		CommandLogic.shows = new ShowList(); //however these get implemented through the JSON
-		this.UserAccounts  = new UserAccounts(); //however these get implemented through the JSON
+		this.users  = new UserAccounts(); //however these get implemented through the JSON
 	}
 	
 	/**
@@ -73,6 +73,12 @@ public class CommandLogic {
 		return sysCommands;
 	}
 	/**
+	 * @return LinkedList of possible admin commands
+	 */
+	public LinkedList<String> getAdminCommands() {
+		return adminCommands;
+	}
+	/**
 	 * @return: LinkedList of possible system commands
 	 */
 	public LinkedList<String> getSearchTypes() {
@@ -92,8 +98,15 @@ public class CommandLogic {
 	 * Logs user in as a guest
 	 */
 	public void guestLogin() {
-		currentUser = new Guest(); //should go through "making a new guest account" in UserAccount
-		//TODO: guest counter variable?
+		currentUser = new Guest();
+	}
+	
+	/**
+	 * Checks if current user is an administrator
+	 * @return true if admin, false if otherwise
+	 */
+	public boolean isAdmin() {
+		return currentUser.isAdmin();
 	}
 	
 	/**
@@ -126,28 +139,127 @@ public class CommandLogic {
 		return wantedShow;
 	}
 	
+	/**
+	 * Writes a review for the user
+	 * @param show show to be reviewed
+	 * @param starCount number of stars in review
+	 * @param description review's description
+	 */
 	public void writeReview(Show show, int starCount, String description) {
 		currentUser.writeReview(show, description, starCount);
 	}
 	
+	/**
+	 * Returns a String of the current user's showTickets
+	 * @return a String representation of showTickets
+	 */
 	public String showTickets() {
 		return currentUser.showTickets();
 	}
 	
+	/**
+	 * Prints out tickets to a file
+	 */
 	public void printTickets() { //TODO: figure out how this works w/ respect to fileIO
 		currentUser.printTickets();
 	}
 	
-	public void buyTicket(Show show) {
-		currentUser.getShoppingCart().buyTicket(show);
+	/**
+	 * Buys a number of tickets
+	 * @param amount amount of tickets bought
+	 * @param show the show that the tickets are being bought from
+	 */
+	public void buyTicket(int amount, Show show) {
+		currentUser.getShoppingCart().buyTicket(amount, show);
 	}
 	
-	public void addShow() {//TODO: this is about to take a looot of String variables; i'm not doing this
-								//until I have a concrete "show" class
+	//TODO: figure out better functionality for adding all shows
+	
+	/**
+	 * Adds a movie to the current list of shows
+	 * @param name
+	 * @param showTime
+	 * @param showDate
+	 * @param venueName
+	 * @param location
+	 * @param ticketPrice
+	 * @param actorList
+	 * @param ageRestriction
+	 * @param category
+	 * @param movieSummary
+	 * @param releaseDate
+	 * @param directorName
+	 * @param mpaRating
+	 */
+	public void addMovie(String name, String showTime, String showDate, String venueName,
+			String location, double ticketPrice, String actorList, int ageRestriction,
+			String category, String movieSummary, String releaseDate, String directorName, 
+			String mpaRating) {
 		if(!currentUser.isAdmin())
 			return;
 		
-		Show newShow = new Show();
-		shows.addShow(newShow);
+		MovieRating MPA = null;
+		if(mpaRating.equals("G"))
+			MPA = MovieRating.G;
+		else if(mpaRating.equals("PG"))
+			MPA = MovieRating.PG;
+		else if(mpaRating.equals("PG13"))
+			MPA = MovieRating.PG13;
+		else if(mpaRating.equals("R"))
+			MPA = MovieRating.R;
+		else if(mpaRating.equals("NC17"))
+			MPA = MovieRating.NC17;
+		
+		Movie newMovie = new Movie(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice,
+				actorList, ageRestriction, category, movieSummary, releaseDate, directorName, MPA);
+		shows.addShow(newMovie);
+		
+	}
+	/**
+	 * Adds a play to the list of shows
+	 * @param name
+	 * @param showTime
+	 * @param showDate
+	 * @param venueName
+	 * @param location
+	 * @param ticketPrice
+	 * @param actorList
+	 * @param ageRestriction
+	 * @param playSummary
+	 * @param genre
+	 */
+	public void addPlay(String name, String showTime, String showDate, String venueName,
+			String location, double ticketPrice, String actorList, int ageRestriction, 
+			String playSummary, String genre) {
+		if(!currentUser.isAdmin())
+			return;
+		
+		Play newPlay = new Play(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice,
+				actorList, ageRestriction, playSummary, genre);
+		shows.addShow(newPlay);
+		
+	}
+	/**
+	 * Adds a concert to the list of shows
+	 * @param name
+	 * @param showTime
+	 * @param showDate
+	 * @param venueName
+	 * @param location
+	 * @param ticketPrice
+	 * @param actorList
+	 * @param ageRestriction
+	 * @param genre
+	 */
+	public void addConcert(String name, String showTime, String showDate, String venueName,
+			String location, double ticketPrice, String actorList, int ageRestriction, 
+			String genre) {
+		
+		if(!currentUser.isAdmin())
+			return;
+		
+		Concert newConcert = new Concert(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice,
+				actorList, ageRestriction, genre);
+		shows.addShow(newConcert);
 	}
 }

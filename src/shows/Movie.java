@@ -17,10 +17,11 @@ public class Movie extends Show {
 	private MovieRating mpaRating;
 	
 	public Movie(ReviewList reviews, String name, String showTime, String showDate, String venueName,
-			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction, 
-			String movieSummary, String releaseDate, String directorName, MovieRating mpaRating) {
+			String location, double ticketPrice, String actorList, int ageRestriction,
+			String category, String movieSummary, String releaseDate, String directorName, 
+			MovieRating mpaRating) {
 		super(reviews, name, showTime, showDate, venueName, location, ticketPrice,
-				actorList, ageRestriction);
+				actorList, ageRestriction, category);
 		this.movieSummary = movieSummary;
 		this.releaseDate = releaseDate;
 		this.directorName = directorName;

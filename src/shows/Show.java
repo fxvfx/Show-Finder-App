@@ -20,7 +20,8 @@ public abstract class Show {
 	protected String venueName;
 	protected String location;
 	protected double ticketPrice;
-	protected LinkedList<String> actorList;
+//	protected LinkedList<String> actorList;
+	protected String actorList;
 	protected int ageRestriction;
 	protected String category;
 	
@@ -49,7 +50,10 @@ public abstract class Show {
 	public double getTicketPrice() {
 		return ticketPrice;
 	}
-	public LinkedList<String> getActorList() {
+//	public LinkedList<String> getActorList() {
+//		return actorList;
+//	}
+	public String getActorList() {
 		return actorList;
 	}
 	public int getAgeRestriction() {
@@ -60,7 +64,7 @@ public abstract class Show {
 	}
 
 	public Show(ReviewList reviews, String name, String showTime, String showDate, String venueName,
-			String location, double ticketPrice, LinkedList<String> actorList, int ageRestriction, 
+			String location, double ticketPrice, String actorList, int ageRestriction, 
 			String category) {
 		
 		seats = new SeatTracker(this,ticketPrice);
