@@ -23,6 +23,26 @@ public class StandardUser extends UserAccount {
 		this.isHandicapped = isHandicapped;
 	}
 
+	public String getPaymentInfo() {
+		return paymentInfo;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public String getIdType() {
+		return idType;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public boolean isHandicapped() {
+		return isHandicapped;
+	}
+
 	@Override
 	public String toString() {
 		return "User information:" +
