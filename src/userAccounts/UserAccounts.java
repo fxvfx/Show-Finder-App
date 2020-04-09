@@ -14,12 +14,21 @@ import shows.ShowList;
 import tickets.TicketList;
 
 public class UserAccounts {
-	
+	private static UserAccounts userAccounts = null;
 	UserAccount userAccount;	
-	private LinkedList<UserAccount> users;
+	private static LinkedList<UserAccount> users;
 	
 	public UserAccounts() {
 		users = new LinkedList<UserAccount>();
+	}
+	
+	public static UserAccounts getInstance() {
+		
+		if(userAccounts == null) {
+			userAccounts = new UserAccounts();
+		}
+		
+		return userAccounts;
 	}
 	
 	private void addUser(UserAccount userAccount) {
@@ -32,6 +41,9 @@ public class UserAccounts {
 			users.remove(userAccount);
 	}
 	
+	public LinkedList<UserAccount> getUsers() {
+		return users;
+	}
 	//(String name, String password, String paymentInfo, int iD, String idType,
 	//int age, boolean isHandicapped) {
 	
