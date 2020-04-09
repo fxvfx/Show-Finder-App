@@ -57,7 +57,7 @@ public class ShowLoader extends DataConstants {
 				
 				
 				
-				Movie movie = new Movie(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice, 
+				Movie movie = new Movie(name, showTime, showDate, venueName, location, ticketPrice, 
 						actorList, ageRestriction, category, movieSummary, releaseDate, directorName, mpaRating);
 				
 				JSONArray reviewListJSON = (JSONArray) movieJSON.get(REVIEWS);
@@ -97,7 +97,7 @@ public class ShowLoader extends DataConstants {
 
 				String playSummary = (String)playJSON.get(PLAY_SUM);
 				
-				Play play = new Play(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice, 
+				Play play = new Play(name, showTime, showDate, venueName, location, ticketPrice, 
 						actorList, ageRestriction, playSummary, category);
 				JSONArray reviewListJSON = (JSONArray) playJSON.get(REVIEWS);
 
@@ -135,7 +135,7 @@ public class ShowLoader extends DataConstants {
 				
 				String genre = (String)concertJSON.get(GENRE);
 
-				Concert concert = new Concert(new ReviewList(), name, showTime, showDate, venueName, location, ticketPrice, 
+				Concert concert = new Concert(name, showTime, showDate, venueName, location, ticketPrice, 
 						actorList, ageRestriction, genre);
 				JSONArray reviewListJSON = (JSONArray) concertJSON.get(REVIEWS);
 
