@@ -1,6 +1,10 @@
 package userAccounts;
 
+import java.io.File;
+import java.io.PrintWriter;
+
 import carts.*;
+
 import shows.Show;
 import tickets.TicketList;
 import reviews.*;
@@ -106,10 +110,23 @@ public abstract class UserAccount {
 	
 	/**
 	 * Prints tickets to file
-	 *	TODO: figure out how the heck this works
+	 *	
 	 */
-	public void printTickets() {
-		
-	}
 	
+	public void printTickets() {
+		try {
+		File file = new File("file.txt");
+		if(!file.exists()) {
+			file.createNewFile();
+		} 
+		PrintWriter writer = new PrintWriter(file);
+		writer.println("**********");
+		writer.println("Ticket details: ");
+		showTickets();
+		System.out.print("\t**********");
+		writer.close();
+	} catch(Exception e) {
+		System.out.println(e);
+	}
+	}	
 }
