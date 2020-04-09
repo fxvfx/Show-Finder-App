@@ -42,7 +42,7 @@ public class showDriver {
 				break;
 			}
 			else if(command.contentEquals("create")) {
-				this.createUser();
+				this.createUser(command);
 				break;
 			}
 			else
@@ -121,8 +121,19 @@ public class showDriver {
 	/**
 	 * Handles output for creating a new user account
 	 */
-	public void createUser() {
-		//low priority atm
+	public void createUser(String username) {
+		String password, confirmedPassword;
+		System.out.println("Enter a username, password, and confirm your password, in that order");
+		username = getInputLine(in);
+		 password = getInputLine(in);
+		 confirmedPassword = getInputLine(in);
+		 if(password != confirmedPassword) {
+			 System.out.println("Passwords do not match. \nPlease re-enter your credentials.");
+			 this.createUser(username);
+		 } else if (password == confirmedPassword){
+			 System.out.println("Thank you for registering! You will now login.");
+			 this.login();
+		 }
 	}
 	
 	/**
