@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import commands.*;
@@ -42,7 +43,8 @@ public class showDriver {
 				break;
 			}
 			else if(command.contentEquals("create")) {
-				this.createUser(command);
+				this.createUser();
+				this.login();
 				break;
 			}
 			else
@@ -62,22 +64,12 @@ public class showDriver {
 				exit();
 			else if(command.contentEquals("commands")) {
 				System.out.print("Possible commands are: ");
-				if(!system.isAdmin()) {
-					for(int i=0; i<system.getSysCommands().size()-1; i++)
-						System.out.print(system.getSysCommands().get(i) + ", ");
-					System.out.println(system.getSysCommands().get(system.getSysCommands().size()-1) + ".\n");
-					}
-					else {
-						for(int i=0; i<system.getAdminCommands().size()-1; i++)
-							System.out.print(system.getAdminCommands().get(i) + ", ");
-						System.out.println(system.getAdminCommands().get(system.getAdminCommands().size()-1) + ".\n");
-					
-						if(command.contentEquals("addShow"))
-							this.addShow();
-						else
-							System.out.println("Command not recognized.  Please try again.\n\n");	 
-					}
+				if(!system.isAdmin())
+					printList(system.getSysCommands());
+				else
+					printList(system.getAdminCommands());	 
 				}
+			
 				else if(command.contentEquals("search"))
 					this.search();
 				else if(command.contentEquals("writeReview"))
@@ -121,19 +113,64 @@ public class showDriver {
 	/**
 	 * Handles output for creating a new user account
 	 */
-	public void createUser(String username) {
-		String password, confirmedPassword;
-		System.out.println("Enter a username, password, and confirm your password, in that order");
+	public void createUser() {
+		String username, password, checkPassword, paymentInfo, idType, isDisabled;
+		int ID, age;
+		boolean isHandicapped;
+		
+		System.out.println("Enter a username.");
 		username = getInputLine(in);
-		 password = getInputLine(in);
-		 confirmedPassword = getInputLine(in);
-		 if(password != confirmedPassword) {
-			 System.out.println("Passwords do not match. \nPlease re-enter your credentials.");
-			 this.createUser(username);
-		 } else if (password == confirmedPassword){
-			 System.out.println("Thank you for registering! You will now login.");
-			 this.login();
-		 }
+		
+		System.out.println("Enter a password.");
+		password = getInputLine(in);
+		
+		System.out.println("Confirm your password.");
+		checkPassword = getInputLine(in);
+		
+		while(!password.equals(checkPassword)) { //String case-sensitive
+			System.out.println("Passwords do not match. \nPlease re-enter your password.");
+			
+			System.out.println("Enter a password.");
+			password = getInputLine(in);
+			
+			System.out.println("Confirm your password.");
+		}
+		
+		System.out.println("Username and password successfully set.  Please input the following information:\n");
+		
+		//TODO: error check inputs for this whole block
+		System.out.print("What is your payment info? ");
+		paymentInfo = getInputLine(in);
+		
+		System.out.print("What is your ID number? ");
+		ID = Integer.parseInt(getInputLine(in));
+		
+		System.out.println("What is your ID type? Choices are:");
+		printList(system.getIdTypes());
+		idType = getInputLine(in);
+		
+		System.out.print("What is your age? ");
+		
+		while((age = Integer.parseInt(getInputLine(in))) < 0) {
+			System.out.print("Invalid age entered.  Please input a valid age: ");
+		}
+		
+		System.out.print("Are you registered with the government as disabled? (Y\\N)");
+		do {
+			isDisabled = getInputLine(in);
+		} while(isDisabled.contentEquals("Y") || isDisabled.contentEquals("N"));
+		
+		if(isDisabled.contentEquals("Y"))
+			isHandicapped = true;
+		else //used blanked "else" statement here b/c preceding do/while loop only allows max 2 cases
+			isHandicapped = false;
+
+		if(system.register(username, password, paymentInfo, ID, idType, age, isHandicapped))
+			System.out.println("User creation successful.  Please log in with your new credentials.\n");
+		else
+			System.out.println("There was an error creating your account.  Please try again later.\n");
+		
+		return;
 	}
 	
 	/**
@@ -332,6 +369,20 @@ public class showDriver {
 			}
 			System.out.println("Show successfully added.");
 		}
+	}
+	
+	/**
+	 * Prints out a String interpretation of a list
+	 * @param list the list to be printed out
+	 * @return String interpretation of the list
+	 */
+	private String printList(LinkedList<String> list) {
+		String printOut = "";
+		
+		for(int i=0; i<list.size()-1; i++)
+			printOut += list.get(i) + ", ";
+		printOut += list.get(list.size()-1);
+		return printOut;
 	}
 	
 	/**

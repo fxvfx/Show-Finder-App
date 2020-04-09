@@ -33,12 +33,16 @@ public class CommandLogic {
 			"category", "name", "review", "time"
 			));
 	
+	public static final LinkedList<String> idTypes = new LinkedList<String>(Arrays.asList(
+			"Senior", "Child", "Student", "Military", "Teacher", "Employee"
+			));
+	
 	private UserAccount currentUser;
 
 	public CommandLogic() {
 		currentUser = null;
 		CommandLogic.shows = new ShowList(); //however these get implemented through the JSON
-		this.users  = new UserAccounts(); //however these get implemented through the JSON
+		users  = new UserAccounts(); //however these get implemented through the JSON
 	}
 	
 	/**
@@ -84,6 +88,12 @@ public class CommandLogic {
 	public LinkedList<String> getSearchTypes() {
 		return searchTypes;
 	}
+	/**
+	 * @return LinkedList of possible id types
+	 */
+	public LinkedList<String> getIdTypes() {
+		return idTypes;
+	}
 	
 	/**
 	 * Verifies if a command is a possible login command
@@ -118,6 +128,22 @@ public class CommandLogic {
 	public boolean login(String user, String pwd) {
 		currentUser = users.login(user, pwd);
 		return currentUser != null;
+	}
+	
+	/**
+	 * Registers a new user to the system, and adds it to the list of users
+	 * @param name
+	 * @param password
+	 * @param paymentInfo
+	 * @param ID
+	 * @param idType
+	 * @param age
+	 * @param isHandicapped
+	 * @return true if successful, false otherwise
+	 */
+	public boolean register(String name, String password, String paymentInfo, int ID, String idType,
+			int age, boolean isHandicapped) {
+		return users.register(name, password, paymentInfo, ID, idType, age, isHandicapped);
 	}
 	
 	/**

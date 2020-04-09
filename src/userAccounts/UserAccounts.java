@@ -57,11 +57,12 @@ public class UserAccounts {
 	 * @param idType user's ID type
 	 * @param age user's age
 	 * @param isHandicapped user's handicapped status
+	 * @return true if successful, false otherwise
 	 */
-	public void register(String name, String password, String paymentInfo, int ID, String idType,
+	public boolean register(String name, String password, String paymentInfo, int ID, String idType,
 			int age, boolean isHandicapped) {
 		UserAccount newUser = new StandardUser(name, password, paymentInfo, ID, idType, age, isHandicapped);
-		addUser(newUser);
+		return users.add(newUser);
 	}
 	
 	/**
@@ -70,10 +71,11 @@ public class UserAccounts {
 	 * @param password administrator's password
 	 * @param shows system's list of shows
 	 * @param accounts system's list of accounts
+	 * @return true if successful, false otherwise
 	 */
-	public void registerAdmin(String name, String password, ShowList shows, UserAccounts accounts) {
+	public boolean registerAdmin(String name, String password, ShowList shows, UserAccounts accounts) {
 		UserAccount newAdmin = new Administrator(name, password, shows, accounts);
-		addUser(newAdmin);
+		return users.add(newAdmin);
 	}
 	
 	/**
