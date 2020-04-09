@@ -77,20 +77,21 @@ public class showDriver {
 						this.showTickets();
 					else if(command.contentEquals("printTickets")) //could probably call system directly
 						this.printTickets();
-					else
-						System.out.println("Command not recognized.  Please try again.\n\n");	 
+ 
+					}
+					else {
+						for(int i=0; i<system.getAdminCommands().size()-1; i++)
+							System.out.print(system.getAdminCommands().get(i) + ", ");
+						System.out.println(system.getAdminCommands().get(system.getAdminCommands().size()-1) + ".\n");
+					
+						if(command.contentEquals("addShow"))
+							this.addShow();
+						else
+							System.out.println("Command not recognized.  Please try again.\n\n");	 
 					}
 				}
-				else {
-					for(int i=0; i<system.getAdminCommands().size()-1; i++)
-						System.out.print(system.getAdminCommands().get(i) + ", ");
-					System.out.println(system.getAdminCommands().get(system.getAdminCommands().size()-1) + ".\n");
-				
-					if(command.contentEquals("addShow"))
-						this.addShow();
-					else
-						System.out.println("Command not recognized.  Please try again.\n\n");	 
-				}
+				else
+					System.out.println("Command not recognized.  Please try again.\n\n");	
 		}
 	}
 	
