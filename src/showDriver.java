@@ -32,6 +32,7 @@ public class showDriver {
 			
 			command = getInputLine(in);
 			
+			//TODO: create a "backtrack" functionality (from login, create a guest)
 			if(command.contentEquals("exit"))
 				exit();
 			else if (command.contentEquals("guest")) {
