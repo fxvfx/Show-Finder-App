@@ -3,7 +3,6 @@ package commands;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import reviews.ReviewList;
 import shows.*;
 import userAccounts.*;
 
@@ -61,7 +60,7 @@ public class CommandLogic {
 	 * @return: the list of users
 	 */
 	public UserAccounts getUsers() {
-		return this.users;
+		return users;
 	}
 	
 	/**
