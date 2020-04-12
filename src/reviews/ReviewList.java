@@ -23,17 +23,19 @@ public class ReviewList {
 	 * Adds a review to the list of reviews
 	 * @param review: review to be added
 	 */
-	public void addReview(Review review) {
-		reviews.add(review);
+	public boolean addReview(Review review) {
+		return reviews.add(review);
+		//return true;
 	}
 	
 	/**
 	 * Removes a review from the list of reviews
 	 * @param review: review to be removed
 	 */
-	public void removeReview(Review review) {
+	public boolean removeReview(Review review) {
 		if(reviews.contains(review))
-			reviews.remove(review);
+			return reviews.remove(review);
+		return true;
 	}
 	
 	/**
