@@ -32,14 +32,18 @@ public class UserAccounts {
 		return userAccounts;
 	}
 	
-	private void addUser(UserAccount userAccount) {
+	private boolean addUser(UserAccount userAccount) {
 		if(userAccount.isAdmin())
-			users.add(userAccount);
+			return users.add(userAccount);
+		else
+			return false;
 	}
 	
-	public void removeUser(UserAccount userAccount) {
+	public boolean removeUser(UserAccount userAccount) {
 		if(userAccount.isAdmin())
-			users.remove(userAccount);
+			return users.remove(userAccount);
+		else
+			return false;
 	}
 	
 	public LinkedList<UserAccount> getUsers() {
@@ -58,10 +62,10 @@ public class UserAccounts {
 	 * @param age user's age
 	 * @param isHandicapped user's handicapped status
 	 */
-	public void register(String name, String password, String paymentInfo, int ID, String idType,
+	public boolean register(String name, String password, String paymentInfo, int ID, String idType,
 			int age, boolean isHandicapped) {
 		UserAccount newUser = new StandardUser(name, password, paymentInfo, ID, idType, age, isHandicapped);
-		addUser(newUser);
+		return addUser(newUser);
 	}
 	
 	/**
@@ -71,9 +75,9 @@ public class UserAccounts {
 	 * @param shows system's list of shows
 	 * @param accounts system's list of accounts
 	 */
-	public void registerAdmin(String name, String password, ShowList shows, UserAccounts accounts) {
+	public boolean registerAdmin(String name, String password, ShowList shows, UserAccounts accounts) {
 		UserAccount newAdmin = new Administrator(name, password, shows, accounts);
-		addUser(newAdmin);
+		return addUser(newAdmin);
 	}
 	
 	/**
