@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests Movie class
+ * @author Michael Norton (CSCE 247-001) //TODO team name
+ *
+ */
 class MovieTest {
 
 	@Test
