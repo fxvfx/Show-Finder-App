@@ -32,14 +32,18 @@ public class UserAccounts {
 		return userAccounts;
 	}
 	
-	private void addUser(UserAccount userAccount) {
+	private boolean addUser(UserAccount userAccount) {
 		if(userAccount.isAdmin())
-			users.add(userAccount);
+			return users.add(userAccount);
+		else
+			return false;
 	}
 	
-	public void removeUser(UserAccount userAccount) {
+	public boolean removeUser(UserAccount userAccount) {
 		if(userAccount.isAdmin())
-			users.remove(userAccount);
+			return users.remove(userAccount);
+		else
+			return false;
 	}
 	
 	public LinkedList<UserAccount> getUsers() {
@@ -75,7 +79,7 @@ public class UserAccounts {
 	 */
 	public boolean registerAdmin(String name, String password, ShowList shows, UserAccounts accounts) {
 		UserAccount newAdmin = new Administrator(name, password, shows, accounts);
-		return users.add(newAdmin);
+		return addUser(newAdmin);
 	}
 	
 	/**
