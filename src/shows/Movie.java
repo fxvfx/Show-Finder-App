@@ -46,6 +46,6 @@ public class Movie extends Show {
 	
 	public String toString() {
 		return super.toString() + "\nMovie Summary: " + movieSummary 
-				+ "\nRelease Date: " + releaseDate + "\nDirector: " + directorName + "Rating" + mpaRating;
+				+ "\nRelease Date: " + releaseDate + "\nDirector: " + directorName + "\nRating: " + mpaRating;
 	}
 }
