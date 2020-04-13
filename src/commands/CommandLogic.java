@@ -40,8 +40,8 @@ public class CommandLogic {
 
 	public CommandLogic() {
 		currentUser = null;
-		CommandLogic.shows = new ShowList(); //however these get implemented through the JSON
-		users  = new UserAccounts(); //however these get implemented through the JSON
+		shows = ShowList.getInstance();
+		users = UserAccounts.getInstance();
 	}
 	
 	/**

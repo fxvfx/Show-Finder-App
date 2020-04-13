@@ -16,10 +16,10 @@ import tickets.TicketList;
 public class UserAccounts {
 
 	private static UserAccounts userAccounts = null;
-	UserAccount userAccount;	
+//	UserAccount userAccount;
 	private static LinkedList<UserAccount> users;
 	
-	public UserAccounts() {
+	private UserAccounts() {
 		users = new LinkedList<UserAccount>();
 	}
 	

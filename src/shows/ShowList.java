@@ -19,7 +19,7 @@ public class ShowList {
 	private static ShowList showList = null;
 	private static LinkedList<Show> shows;
   
-	public ShowList() {
+	private ShowList() {
 		shows = new LinkedList<Show>();
 	}
 	
