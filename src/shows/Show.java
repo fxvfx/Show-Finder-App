@@ -84,9 +84,10 @@ public abstract class Show {
 	/**
 	 * adds a Review to the show's list of Reviews
 	 * @param review: review to be added
+	 * @return 
 	 */
-	public void addReview(Review review) {
-		reviews.addReview(review);
+	public boolean addReview(Review review) {
+		return reviews.addReview(review);
 	}
 	
 	@Override

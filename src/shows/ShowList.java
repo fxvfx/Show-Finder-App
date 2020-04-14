@@ -40,7 +40,9 @@ public class ShowList {
 	 * @return true if show was added, false otherwise
 	 */
 	public boolean addShow(Show show) {
-		return shows.add(show);
+		if(show != null)
+			return shows.add(show);
+		return false;
 	}
   
 	/**
