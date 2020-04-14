@@ -22,7 +22,7 @@ public class Administrator extends UserAccount {
 	 * Adds a show to the system's list of shows
 	 * @param show show to be added
 	 */
-	public void addShow(Show show) {
-		shows.addShow(show);
+	public boolean addShow(Show show) {
+		return shows.addShow(show);
 	}
 }

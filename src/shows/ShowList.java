@@ -37,17 +37,19 @@ public class ShowList {
 	/**
 	 * Inserts a show into the list of shows
 	 * @param show The show to be inserted
+	 * @return true if show was added, false otherwise
 	 */
-	public void addShow(Show show) {
-		shows.add(show);
+	public boolean addShow(Show show) {
+		return shows.add(show);
 	}
   
 	/**
 	 * Removes a show from the list
 	 * @param show The show to be removed
+	 * @return true if show was removed, false otherwise
 	 */
-	private void removeShow(Show show) {
-		shows.remove(show);
+	public boolean removeShow(Show show) {
+		return shows.remove(show);
 	}
   
 	/**
