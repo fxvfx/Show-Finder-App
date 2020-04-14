@@ -7,6 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import shows.ShowList;
 
+/**
+ * Tests the UserAccounts class
+ * @author Francis Villanueva
+ *
+ */
 class UserAccountsTest {
 
 	static UserAccounts users;

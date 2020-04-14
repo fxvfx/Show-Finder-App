@@ -8,6 +8,11 @@ import org.junit.jupiter.api.Test;
 import shows.Play;
 import shows.ShowList;
 
+/**
+ * Tests the Guest class
+ * @author Francis Villanueva
+ *
+ */
 class GuestTest {
 	static Guest Guest1;
 	static Guest Guest2;

@@ -8,6 +8,11 @@ import org.junit.jupiter.api.Test;
 import shows.Play;
 import shows.ShowList;
 
+/**
+ * Tests the Administrator class
+ * @author Francis Villanueva
+ *
+ */
 class AdministratorTest {
 	
 	static Administrator anAdmin;

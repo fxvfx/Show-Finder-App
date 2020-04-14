@@ -5,6 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the StandardUser class
+ * @author Francis Villanueva
+ *
+ */
 class StandardUserTest {
 
 	static StandardUser aUser;

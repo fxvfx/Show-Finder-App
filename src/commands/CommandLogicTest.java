@@ -10,6 +10,11 @@ import shows.Show;
 import shows.ShowList;
 import userAccounts.UserAccounts;
 
+/**
+ * Tests the CommandLogic class
+ * @author Francis Villanueva
+ *
+ */
 class CommandLogicTest {
 	static CommandLogic system;
 	static Show aPlay;
