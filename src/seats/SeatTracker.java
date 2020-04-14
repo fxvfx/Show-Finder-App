@@ -21,7 +21,7 @@ public class SeatTracker {
 		for(int i=0; i<ROW_NUM; i++) {
 			for(int j=0; j<SEAT_LETTERS.length; j++) {
 				String seatID = i + SEAT_LETTERS[j];
-				Ticket newTicket = new Ticket(show, seatID, ticketPrice, false);
+				Ticket newTicket = new Ticket(show, seatID, ticketPrice);
 				seats.add(newTicket);
 			}
 		}

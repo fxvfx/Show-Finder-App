@@ -16,7 +16,7 @@ public class Ticket {
 //	private boolean handicapped;
 
 	// parameterized constructor
-	public Ticket(Show show, String seatID, double price, boolean isTaken) {
+	public Ticket(Show show, String seatID, double price) {
 		this.show = show;
 		this.seatID = seatID;
 		this.price = price;
