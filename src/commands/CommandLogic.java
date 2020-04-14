@@ -12,9 +12,11 @@ import userAccounts.*;
  *
  */
 public class CommandLogic {
+	private static CommandLogic commandLogic = null;
 	
-	private static ShowList shows;
-	private static UserAccounts users;
+	//originally private, but changed to package for JUnit testing
+	static ShowList shows;
+	static UserAccounts users;
 	
 	public static final LinkedList<String> loginCommands = new LinkedList<String>(Arrays.asList(
 			"login", "guest", "create"
@@ -36,12 +38,23 @@ public class CommandLogic {
 			"Senior", "Child", "Student", "Military", "Teacher", "Employee"
 			));
 	
-	private UserAccount currentUser;
+	UserAccount currentUser; //originally private, but changed to package for JUnit testing
 
-	public CommandLogic() {
+	private CommandLogic() {
 		currentUser = null;
 		shows = ShowList.getInstance();
 		users = UserAccounts.getInstance();
+	}
+	
+	/**
+	 * Constructs a new instance of CommandLogic if one does not exist
+	 * @return a static CommandLogic class
+	 */
+	public static CommandLogic getInstance() {
+		if(commandLogic == null) {
+			commandLogic = new CommandLogic();
+		}
+		return commandLogic;
 	}
 	
 	/**
@@ -100,6 +113,8 @@ public class CommandLogic {
 	 * @return: true if command is possible, false otherwise
 	 */
 	public boolean validLoginCommand(String command) {
+		if(command == null)
+			return false;
 		return loginCommands.contains(command);
 	}
 	
@@ -169,9 +184,10 @@ public class CommandLogic {
 	 * @param show show to be reviewed
 	 * @param starCount number of stars in review
 	 * @param description review's description
+	 * @return true if review written, false otherwise
 	 */
-	public void writeReview(Show show, int starCount, String description) {
-		currentUser.writeReview(show, description, starCount);
+	public boolean writeReview(Show show, int starCount, String description) {
+		return currentUser.writeReview(show, description, starCount);
 	}
 	
 	/**
@@ -184,18 +200,20 @@ public class CommandLogic {
 	
 	/**
 	 * Prints out tickets to a file
+	 * @return true if successful, false otherwise
 	 */
-	public void printTickets() { //TODO: figure out how this works w/ respect to fileIO
-		currentUser.printTickets();
+	public boolean printTickets() { //TODO: figure out how this works w/ respect to fileIO
+		return currentUser.printTickets();
 	}
 	
 	/**
 	 * Buys a number of tickets
 	 * @param amount amount of tickets bought
 	 * @param show the show that the tickets are being bought from
+	 * @return true if successful, false otherwise
 	 */
-	public void buyTicket(int amount, Show show) {
-		currentUser.getShoppingCart().buyTicket(amount, show);
+	public boolean buyTicket(int amount, Show show) {
+		return currentUser.getShoppingCart().buyTicket(amount, show);
 	}
 	
 	/**
@@ -203,9 +221,10 @@ public class CommandLogic {
 	 * @param amount amount of tickets bought
 	 * @param show the show that the tickets are being bought from
 	 * @param seat the first seat to be purchased
+	 * @return true if successful, false otherwise
 	 */
-	public void buyTicket(int amount, Show show, String seat) {
-		currentUser.getShoppingCart().buySeat(amount, show, seat);
+	public boolean buyTicket(int amount, Show show, String seat) {
+		return currentUser.getShoppingCart().buySeat(amount, show, seat);
 	}
 	
 	//TODO: figure out better functionality for adding all shows
@@ -225,13 +244,14 @@ public class CommandLogic {
 	 * @param releaseDate
 	 * @param directorName
 	 * @param mpaRating
+	 * @return true if show was added, false otherwise
 	 */
-	public void addMovie(String name, String showTime, String showDate, String venueName,
+	public boolean addMovie(String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, String actorList, int ageRestriction,
 			String category, String movieSummary, String releaseDate, String directorName, 
 			String mpaRating) {
 		if(!currentUser.isAdmin())
-			return;
+			return false;
 		
 		MovieRating MPA = null;
 		if(mpaRating.equals("G"))
@@ -247,7 +267,7 @@ public class CommandLogic {
 		
 		Movie newMovie = new Movie(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, category, movieSummary, releaseDate, directorName, MPA);
-		shows.addShow(newMovie);
+		return shows.addShow(newMovie);
 		
 	}
 	/**
@@ -262,16 +282,18 @@ public class CommandLogic {
 	 * @param ageRestriction
 	 * @param playSummary
 	 * @param genre
+	 * @return true if play was added, false otherwise
 	 */
-	public void addPlay(String name, String showTime, String showDate, String venueName,
+	public boolean addPlay(String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, String actorList, int ageRestriction, 
 			String playSummary, String genre) {
 		if(!currentUser.isAdmin())
-			return;
+			return false;
 		
 		Play newPlay = new Play(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, playSummary, genre);
 		shows.addShow(newPlay);
+		return true;
 		
 	}
 	/**
@@ -285,16 +307,17 @@ public class CommandLogic {
 	 * @param actorList
 	 * @param ageRestriction
 	 * @param genre
+	 * @return true if show was added, false otherwise
 	 */
-	public void addConcert(String name, String showTime, String showDate, String venueName,
+	public boolean addConcert(String name, String showTime, String showDate, String venueName,
 			String location, double ticketPrice, String actorList, int ageRestriction, 
 			String genre) {
 		
 		if(!currentUser.isAdmin())
-			return;
+			return false;
 		
 		Concert newConcert = new Concert(name, showTime, showDate, venueName, location, ticketPrice,
 				actorList, ageRestriction, genre);
-		shows.addShow(newConcert);
+		return shows.addShow(newConcert);
 	}
 }

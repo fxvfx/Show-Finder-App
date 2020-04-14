@@ -24,11 +24,15 @@ public abstract class Cart {
 	/**
 	 * Adds tickets to current ticket list
 	 * @param tickets: list of tickets to add
+	 * @return true if tickets added, false otherwise
 	 */
-	public void addTickets(TicketList newTickets) {
-		for(int i=0; i<tickets.getTicketAmount(); i++) {
+	public boolean addTickets(TicketList newTickets) {
+		if(newTickets == null)
+			return false;
+		for(int i=0; i<newTickets.getTicketAmount(); i++) {
 			tickets.add(newTickets.get(i));
 		}
+		return true;
 	}
 	
 	/**
@@ -36,7 +40,7 @@ public abstract class Cart {
 	 * @param tickets: list of tickets to remove
 	 */
 	public void removeTickets(TicketList newTickets) {
-		for(int i=0; i<tickets.getTicketAmount(); i++) {
+		for(int i=0; i<newTickets.getTicketAmount(); i++) {
 			tickets.remove(newTickets.get(i));
 		}
 	}

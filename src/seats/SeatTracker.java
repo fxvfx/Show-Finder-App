@@ -97,7 +97,7 @@ public class SeatTracker {
 	 */
 	public TicketList buyTicket(int amount, int row, String seat) {
 		TicketList purchasedTickets = new TicketList();
-		int seatNumber = row * ROW_NUM;
+		int seatNumber = row;
 		for(int i = 0; i < SEAT_LETTERS.length; i++) {
 			if(SEAT_LETTERS[i].equals(seat)) {
 				break;

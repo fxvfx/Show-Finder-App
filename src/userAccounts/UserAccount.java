@@ -20,9 +20,10 @@ public abstract class UserAccount {
 	protected String password;
 	private boolean isAdmin;
 	
-	private TicketList myTickets;
-	private ShoppingCart shoppingCart;
-	private PurchasedCart purchasedCart;
+	//originally private, but changed visibility to package b/c JUnit test cases don't play nice w/ objects
+	TicketList myTickets;
+	ShoppingCart shoppingCart;
+	PurchasedCart purchasedCart;
 	
 	
 	public UserAccount(String name, String password, boolean isAdmin) {
@@ -44,6 +45,7 @@ public abstract class UserAccount {
 	}
 	/**
 	 * @return the password
+	 * TODO: maybe make this have to authenticate user before showing the password
 	 */
 	public String getPassword() {
 		return password;
@@ -102,18 +104,21 @@ public abstract class UserAccount {
 	 * @param show show the review belongs to
 	 * @param reviewContent String content of the review
 	 * @param numStars number of stars given to show
+	 * @return true if added, false otherwise
 	 */
-	public void writeReview(Show show, String reviewContent, int numStars) {
-		Review newReview = new Review(show,reviewContent,numStars,this);
-		show.addReview(newReview);
+	public boolean writeReview(Show show, String reviewContent, int numStars) {
+		if(show != null && reviewContent != null && numStars > 0) {
+			Review newReview = new Review(show,reviewContent,numStars,this);
+			return show.addReview(newReview);
+		}
+		return false;
 	}
 	
 	/**
 	 * Prints tickets to file
-	 *	
+	 *	@return true if successful, false otherwise
 	 */
-	
-	public void printTickets() {
+	public boolean printTickets() {
 		try {
 		File file = new File("file.txt");
 		if(!file.exists()) {
@@ -123,10 +128,12 @@ public abstract class UserAccount {
 		writer.println("**********");
 		writer.println("Ticket details: ");
 		showTickets();
-		System.out.print("\t**********");
+		writer.print("\t**********");
 		writer.close();
+		return true;
 	} catch(Exception e) {
 		System.out.println(e);
+		return false;
 	}
 	}	
 }

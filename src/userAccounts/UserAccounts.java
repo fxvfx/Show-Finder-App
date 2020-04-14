@@ -17,7 +17,7 @@ public class UserAccounts {
 
 	private static UserAccounts userAccounts = null;
 //	UserAccount userAccount;
-	private static LinkedList<UserAccount> users;
+	static LinkedList<UserAccount> users;
 	
 	private UserAccounts() {
 		users = new LinkedList<UserAccount>();
@@ -33,17 +33,13 @@ public class UserAccounts {
 	}
 	
 	private boolean addUser(UserAccount userAccount) {
-		if(userAccount.isAdmin())
-			return users.add(userAccount);
-		else
-			return false;
+		return users.add(userAccount);
 	}
 	
 	public boolean removeUser(UserAccount userAccount) {
-		if(userAccount.isAdmin())
+		if(userAccount != null)
 			return users.remove(userAccount);
-		else
-			return false;
+		return false;
 	}
 	
 	public LinkedList<UserAccount> getUsers() {
@@ -65,8 +61,12 @@ public class UserAccounts {
 	 */
 	public boolean register(String name, String password, String paymentInfo, int ID, String idType,
 			int age, boolean isHandicapped) {
-		UserAccount newUser = new StandardUser(name, password, paymentInfo, ID, idType, age, isHandicapped);
-		return users.add(newUser);
+		//booleans can't be null by default
+		if (name != null && password != null && paymentInfo != null && ID > 0 && idType != null && age > 0) {
+			UserAccount newUser = new StandardUser(name, password, paymentInfo, ID, idType, age, isHandicapped);
+			return users.add(newUser);
+		}
+		return false;
 	}
 	
 	/**
