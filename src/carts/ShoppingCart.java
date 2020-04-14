@@ -35,12 +35,13 @@ public class ShoppingCart extends Cart{
 	 * Buys tickets to a specific show
 	 * @param amount: number of tickets to be bought
 	 * @param show: the show the tickets will be bought from
+	 * @return 
 	 */
-	public void buyTicket(int amount, Show show) {
-		if(amount < 0)
-			return;
+	public boolean buyTicket(int amount, Show show) {
+		if(amount < 0 || show == null)
+			return false;
 		TicketList boughtTickets = show.getSeats().buyTicket(amount);
-		this.addTickets(boughtTickets);
+		return this.addTickets(boughtTickets);
 	}
 	
 	/**
@@ -48,20 +49,21 @@ public class ShoppingCart extends Cart{
 	 * @param amount: number of tickets to be bought
 	 * @param show: the show the tickets will be bought from
 	 * @param seat: the first desired seat
+	 * @return true if seat bought, false otherwise
 	 */
-	public void buySeat(int amount, Show show, String seat) {
+	public boolean buySeat(int amount, Show show, String seat) {
 		if(amount < 0)
-			return;
-		TicketList boughtTickets = show.getSeats().buyTicket(amount, Integer.parseInt(seat.substring(0,0)), seat.substring(1));
-		addTickets(boughtTickets);
+			return false;
+		TicketList boughtTickets = show.getSeats().buyTicket(amount, Integer.parseInt(seat.substring(0,1)), seat.substring(1));
+		return addTickets(boughtTickets);
 	}
 	/**
 	 * Buys all the remaining tickets to a specific show
 	 * @param show: the show to be bought out
 	 */
-	public void buyTheater(Show show) {
+	public boolean buyTheater(Show show) {
 		TicketList boughtTickets = show.getSeats().buyTheater();
-		this.addTickets(boughtTickets);
+		return this.addTickets(boughtTickets);
 	}
 	
 	/**
@@ -69,9 +71,10 @@ public class ShoppingCart extends Cart{
 	 * @param show: the show to be refunded to
 	 * @param seatID: the ID of the seat to be refunded to
 	 */
-	public void removeTicket(Ticket ticket) {
+	public boolean removeTicket(Ticket ticket) {
 		tickets.remove(ticket);
-		ticket.getShow().getSeats().refundTicket(ticket);
+		return ticket.getShow().getSeats().refundTicket(ticket);
+		//return removeTicket(ticket);
 	}
  	 
 }

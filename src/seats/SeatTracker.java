@@ -1,4 +1,4 @@
-package seats;
+.package seats;
 
 import shows.Show;
 import tickets.*;
@@ -12,9 +12,9 @@ public class SeatTracker {
 
 	public final int ROW_NUM = 5;
 	public final String[] SEAT_LETTERS = {"A", "B", "C", "D", "E"};
-	
+
 	private TicketList seats;
-	
+
 	public SeatTracker(Show show, double ticketPrice) {
 		seats = new TicketList();
 		//for now, whenever SeatTracker is constructed, it always has 25 seats max
@@ -26,28 +26,28 @@ public class SeatTracker {
 			}
 		}
 	}
-	
+
 	public int getRowNum() {
 		return ROW_NUM;
 	}
-	
+
 	/*private void setRowNum(int rowNum) {
 		this.ROW_NUM = rowNum;
 	}*/
-	
+
 	public String[] getSeatLetters() {
 		return SEAT_LETTERS;
 	}
-	
+
 	/*private void setSeatLetters(String[] seatLetters) {
 		this.SEAT_LETTERS = seatLetters;
 	}*/
-	
+
 	public TicketList getSeats() {
 		return seats;
 	}
 	//TODO: SeatTracker constructor that specifies price, SeatTracker constructor that specifies size
-	
+
 	/**
 	 * Shows the available seats for a Show
 	 * @return: a String representation of the available seats
@@ -71,14 +71,14 @@ public class SeatTracker {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Buys multiple tickets
 	 * @return: a TicketList of the tickets that were bought
 	 */
 	public TicketList buyTicket(int amount) {
 		TicketList purchasedTickets = new TicketList();
-		
+
 		for(int i=0; i<amount; i++) {
 			if(seats.get(i) != null && seats.get(i).getIsTaken() == false) {
 				seats.purchase(seats.get(i));
@@ -87,7 +87,7 @@ public class SeatTracker {
 		}
 		return purchasedTickets;
 	}
-	
+
 	/**
 	 * Buys tickets starting with specific seat
 	 * @param amount: of tickets to buy
@@ -104,7 +104,7 @@ public class SeatTracker {
 			}
 			seatNumber ++;
 		}
-		
+
 		for(int i = 0; i < amount; i++) {
 			if(seats.get(seatNumber + i) != null && !seats.get(seatNumber + i).getIsTaken()) {
 				seats.purchase(seats.get(seatNumber + i));
@@ -119,7 +119,7 @@ public class SeatTracker {
 	 */
 	public TicketList buyTheater() {
 		TicketList purchasedTickets = new TicketList();
-		
+
 		for(int i=0; i<seats.getTicketAmount(); i++) {
 			if(seats.get(i) != null && seats.get(i).getIsTaken() == false) {
 				seats.purchase(seats.get(i));
@@ -135,7 +135,7 @@ public class SeatTracker {
 	public void refundTicket(Ticket ticket) {
 		seats.refund(ticket);
 	}
-	
+
 	/**
 	 * String representation of a SeatTracker; simply returns # of available seats
 	 * @return: integer number of available seats
