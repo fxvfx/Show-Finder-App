@@ -46,7 +46,7 @@ public class ShowList {
 	 * Removes a show from the list
 	 * @param show The show to be removed
 	 */
-	private void removeShow(Show show) {
+	public void removeShow(Show show) {
 		shows.remove(show);
 	}
   
