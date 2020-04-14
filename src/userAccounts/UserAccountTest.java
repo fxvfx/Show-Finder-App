@@ -10,6 +10,11 @@ import shows.Play;
 import shows.Show;
 import shows.ShowList;
 
+/**
+ * Tests the UserAccount class
+ * @author Francis Villanueva
+ *
+ */
 class UserAccountTest {
 	static UserAccount user;
 	static UserAccount buyer;
