@@ -61,9 +61,9 @@ public class ShoppingCart extends Cart{
 	 * Buys all the remaining tickets to a specific show
 	 * @param show: the show to be bought out
 	 */
-	public void buyTheater(Show show) {
+	public boolean buyTheater(Show show) {
 		TicketList boughtTickets = show.getSeats().buyTheater();
-		this.addTickets(boughtTickets);
+		return this.addTickets(boughtTickets);
 	}
 	
 	/**
@@ -71,9 +71,10 @@ public class ShoppingCart extends Cart{
 	 * @param show: the show to be refunded to
 	 * @param seatID: the ID of the seat to be refunded to
 	 */
-	public void removeTicket(Ticket ticket) {
+	public boolean removeTicket(Ticket ticket) {
 		tickets.remove(ticket);
-		ticket.getShow().getSeats().refundTicket(ticket);
+		return ticket.getShow().getSeats().refundTicket(ticket);
+		//return removeTicket(ticket);
 	}
  	 
 }

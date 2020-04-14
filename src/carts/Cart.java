@@ -8,12 +8,7 @@ import tickets.*;
  * @editor Francis Villanueva
  *
  */
-public abstract class Cart {
-	
-	/*TicketList myTickets;
-	ConcessionsList myConcessions;
-	CouponsList myCoupons;
-	 */	
+public class Cart {
 	
 	protected TicketList tickets;
 
@@ -39,10 +34,15 @@ public abstract class Cart {
 	 * Removes tickets from current ticket list
 	 * @param tickets: list of tickets to remove
 	 */
+<<<<<<< HEAD
 	public void removeTickets(TicketList newTickets) {
+=======
+	public boolean removeTickets(TicketList newTickets) {
+>>>>>>> tests-tariq
 		for(int i=0; i<newTickets.getTicketAmount(); i++) {
 			tickets.remove(newTickets.get(i));
 		}
+		return true;
 	}
 	
 	/**
