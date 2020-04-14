@@ -29,8 +29,7 @@ class ShowListTest {
 	@Test
 	public void testAddShow() {
 		ShowList showList = ShowList.getInstance();
-		showList.addShow(concert);
-		assertFalse(showList.getShows().isEmpty());
+		assertTrue(showList.addShow(concert));
 	}
 
 	@Test
@@ -89,8 +88,7 @@ class ShowListTest {
 	@Test
 	public void testRemoveShow() {
 		ShowList showList = ShowList.getInstance();
-		showList.removeShow(concert);
-		assertTrue(showList.getShows().isEmpty());
+		assertTrue(showList.removeShow(concert));
 	}
 
 }
