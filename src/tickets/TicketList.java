@@ -45,10 +45,12 @@ public class TicketList {
 	/**
 	 * Adds a ticket to the List
 	 * @param ticket:  ticket to be added
+	 * @return index of ticket added
 	 */
-	public void add(Ticket ticket) {
+	public int add(Ticket ticket) {
 		tickets.add(ticket);
 		availableSeats++;
+		return tickets.indexOf(ticket);
 	}
 	
 	/**
